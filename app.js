@@ -1,10 +1,15 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-require('dotenv').config();
+const connectDB = require("./config/db");
+require("dotenv").config();
 
-app.get('/', (req, res) => {
-  res.send('Hello');
-});
+// import routes
+const userRoutes = require("./routes/user");
+
+connectDB();
+
+// routes middleware
+app.use("/api", userRoutes);
 
 const port = process.env.PORT || 8000;
 

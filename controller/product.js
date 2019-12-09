@@ -13,15 +13,29 @@ exports.create = (req, res) => {
         error: 'Image could not be uploaded'
       });
     }
+
+    // check for all fields
+    const { name, description, price, category, quantity } = fields;
+
+    if (!name || !description || !price || !category || !quantity) {
+      return res.status(400).json({
+        error: 'All fields are required'
+      });
+    }
+
     let product = new Product(fields);
 
     if (files.photo) {
+      if (files.photo.size > 5000000) {
+        return res.status(400).json({
+          error: 'Image should be less than 1Mb'
+        });
+      }
       product.photo.data = fs.readFileSync(files.photo.path);
       product.photo.contentType = files.photo.type;
     }
 
     product.save((err, result) => {
-      console.log(err);
       if (err) {
         res.status(400).json({
           error: errorHandler(err)

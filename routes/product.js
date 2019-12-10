@@ -5,7 +5,8 @@ const {
   productById,
   read,
   remove,
-  update
+  update,
+  list
 } = require('../controller/product');
 const { userSignupValidator } = require('../validator/index');
 const { requireSignin, isAuth, isAdmin } = require('../controller/auth');
@@ -27,6 +28,8 @@ router.put(
   isAdmin,
   update
 );
+
+router.get('/products', list);
 
 router.param('userId', userById);
 router.param('productId', productById);

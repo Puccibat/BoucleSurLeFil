@@ -86,6 +86,9 @@ const Signin = () => {
         return <Redirect to='/user/dashboard' />;
       }
     }
+    if (isAuth()) {
+      return <Redirect to='/' />;
+    }
   };
 
   return (

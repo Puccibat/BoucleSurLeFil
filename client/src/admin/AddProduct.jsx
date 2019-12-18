@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '../core/Layout';
 import { isAuth } from '../auth/index';
-import { createProduct } from '../admin/ApiAdmin';
+import { createProduct, getCategories } from '../admin/ApiAdmin';
 import AddCategories from './AddCategories';
 
 const AddProduct = () => {
@@ -34,8 +34,19 @@ const AddProduct = () => {
     formData
   } = values;
 
+  // load categories and set form data
+  const init = () => {
+    getCategories().then(data => {
+      if (data.error) {
+        setValues({ ...values, error: data.error });
+      } else {
+        setValues({ ...values, categories: data, formData: new FormData() });
+      }
+    });
+  };
+
   useEffect(() => {
-    setValues({ ...values, formData: new FormData() });
+    init();
   }, []);
 
   const handleChange = name => event => {
@@ -86,7 +97,7 @@ const AddProduct = () => {
           onChange={handleChange('name')}
           type='text'
           className='form-control'
-          values={name}
+          value={name}
         />
       </div>
 
@@ -95,7 +106,7 @@ const AddProduct = () => {
         <textarea
           onChange={handleChange('description')}
           className='form-control'
-          values={description}
+          value={description}
         />
       </div>
 
@@ -105,15 +116,20 @@ const AddProduct = () => {
           onChange={handleChange('price')}
           type='number'
           className='form-control'
-          values={price}
+          value={price}
         />
       </div>
 
       <div className='form-group'>
         <label className='text-muted'>Category</label>
         <select onChange={handleChange('category')} className='form-control'>
-          <option value='5dee1389fadfce237cf1284a'>Colliers</option>
-          <option value='5dee1389fadfce237cf1284a'>colliers</option>
+          <option>Please select a category</option>
+          {categories &&
+            categories.map((category, index) => (
+              <option key={index} value={category._id}>
+                {category.name}
+              </option>
+            ))}
         </select>
       </div>
 
@@ -123,13 +139,38 @@ const AddProduct = () => {
           onChange={handleChange('quantity')}
           type='number'
           className='form-control'
-          values={quantity}
+          value={quantity}
         />
       </div>
 
       <button className='btn btn-outline-primary'>Create Product</button>
     </form>
   );
+
+  const showError = () => (
+    <div
+      className='alert alert-danger'
+      style={{ display: error ? '' : 'none' }}
+    >
+      {error}
+    </div>
+  );
+
+  const showSuccess = () => (
+    <div
+      className='alert alert-info'
+      style={{ display: createdProduct ? '' : 'none' }}
+    >
+      <h2>{`${createdProduct} is created !`}</h2>
+    </div>
+  );
+
+  const showLoading = () =>
+    loading && (
+      <div className='alert alert-success'>
+        <h2>Loading...</h2>
+      </div>
+    );
 
   return (
     <Layout
@@ -138,7 +179,12 @@ const AddProduct = () => {
       className='container'
     >
       <div className='row'>
-        <div className='col-md-8 offset-md-2'>{newPostForm()}</div>
+        <div className='col-md-8 offset-md-2'>
+          {showLoading()}
+          {showError()}
+          {showSuccess()}
+          {newPostForm()}
+        </div>
       </div>
     </Layout>
   );

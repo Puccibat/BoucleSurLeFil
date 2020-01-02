@@ -30,7 +30,7 @@ exports.create = (req, res) => {
         error: 'Image could not be uploaded'
       });
     }
-    // check for all fields
+    // Vérification des champs
     const { name, description, price, category, quantity } = fields;
 
     if (!name || !description || !price || !category || !quantity) {
@@ -44,7 +44,7 @@ exports.create = (req, res) => {
     if (files.photo) {
       if (files.photo.size > 5000000) {
         return res.status(400).json({
-          error: 'Image should be less than 1Mb'
+          error: 'Image should be less than 5Mb'
         });
       }
       product.photo.data = fs.readFileSync(files.photo.path);

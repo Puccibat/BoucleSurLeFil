@@ -4,7 +4,7 @@ import { signout, isAuth } from '../auth/index';
 
 const isActive = (history, path) => {
   if (history.location.pathname === path) {
-    return { color: '#951616' };
+    return { color: '#000000' };
   } else {
     return { color: '#ffffff' };
   }
@@ -13,7 +13,7 @@ const isActive = (history, path) => {
 const Menu = ({ history }) => {
   return (
     <div>
-      <ul className='nav nav-tabs bg-primary'>
+      <ul className='nav nav-tabs bg-danger'>
         <li className='nav-item'>
           <Link className='nav-link' style={isActive(history, '/')} to='/'>
             Home
@@ -27,6 +27,16 @@ const Menu = ({ history }) => {
             to='/shop'
           >
             Shop
+          </Link>
+        </li>
+
+        <li className='nav-item'>
+          <Link
+            className='nav-link'
+            style={isActive(history, '/about')}
+            to='/about'
+          >
+            About
           </Link>
         </li>
 

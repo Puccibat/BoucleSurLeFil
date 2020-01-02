@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const mongoURI =
-  "mongodb+srv://Baptiste:Baptiste7@cluster0-qzh6z.mongodb.net/nodeApi?retryWrites=true&w=majority";
+  'mongodb+srv://Baptiste:Baptiste7@cluster0-qzh6z.mongodb.net/nodeApi?retryWrites=true&w=majority';
 
 const connectDB = async () => {
   try {
@@ -10,9 +10,9 @@ const connectDB = async () => {
       useUnifiedTopology: true
     });
 
-    console.log("mongoDB connected");
+    console.log('mongoDB connected');
   } catch (error) {
-    console.log(err.message);
+    console.log(error.message);
     // Exit process with failure
     process.exit(1);
   }

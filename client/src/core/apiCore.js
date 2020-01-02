@@ -7,7 +7,7 @@ export const getProducts = sortBy => {
     .then(response => {
       return response.json();
     })
-    .catch(err => console.log(err));
+    .catch(error => console.log(error));
 };
 
 export const getCategories = () => {
@@ -17,5 +17,15 @@ export const getCategories = () => {
     .then(response => {
       return response.json();
     })
-    .catch(err => console.log(err));
+    .catch(error => console.log(error));
+};
+
+export const read = productId => {
+  return fetch(`${API}/product/${productId}`, {
+    method: 'GET'
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(error => console.log(error));
 };

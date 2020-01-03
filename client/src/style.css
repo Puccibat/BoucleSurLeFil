@@ -40,6 +40,13 @@
   animation: Gradient 15s ease infinite;
 }
 
+.product-page-heading {
+  font-family: 'Rochester', cursive;
+}
+.product-details {
+  font-family: 'Quicksand', sans-serif;
+}
+
 @-webkit-keyframes Gradient {
   0% {
     background-position: 0% 50%;

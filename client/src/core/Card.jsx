@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import ShowImage from './ShowImage';
 import { addItem } from './cartHelpers';
 
-const Card = ({ product }) => {
+const Card = ({ product, showAddToCartButton = true, cartUpdate = false }) => {
   const [redirect, setRedirect] = useState(false);
 
   const addToCart = () => {
@@ -18,11 +18,16 @@ const Card = ({ product }) => {
     }
   };
 
-  const showAddToCartButton = () => {
+  const showAddToCart = showAddToCartButton => {
     return (
-      <button onClick={addToCart} className='btn btn-outline-warning mt-2 mb-2'>
-        Add to card
-      </button>
+      showAddToCartButton && (
+        <button
+          onClick={addToCart}
+          className='btn btn-outline-warning mt-2 mb-2'
+        >
+          Add to card
+        </button>
+      )
     );
   };
 
@@ -34,6 +39,10 @@ const Card = ({ product }) => {
     );
   };
 
+  // const showCartUpdateOptions = cartUpdate => {
+  //   return cartUpdate &&
+  // }
+
   return (
     <div className='col-3 mb-3'>
       <div className='card'>
@@ -41,7 +50,7 @@ const Card = ({ product }) => {
         <div className='card-body'>
           {shouldRedirect(redirect)}
           <ShowImage item={product} url='product' />
-          <p>{product.description.substring(0, 30)}</p>
+          <p>{product.description.substring(0, 50)}</p>
           <p>€{product.price}</p>
           {showStock(product.quantity)}
           <br />
@@ -50,7 +59,7 @@ const Card = ({ product }) => {
               View Product
             </button>
           </Link>
-          {showAddToCartButton()}
+          {showAddToCart(showAddToCartButton)}
         </div>
       </div>
     </div>

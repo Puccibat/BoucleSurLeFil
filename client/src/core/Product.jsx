@@ -6,7 +6,7 @@ import ShowImage from './ShowImage';
 import { read } from './apiCore';
 import { addItem } from './cartHelpers';
 
-const Product = (product, showAddToCartButton = true, cartUpdate = false) => {
+const Product = (product, showAddToCartButton = true) => {
   const [productItem, setProductItem] = useState({});
   const [redirect, setRedirect] = useState(false);
   const [error, setError] = useState(false);
@@ -46,10 +46,6 @@ const Product = (product, showAddToCartButton = true, cartUpdate = false) => {
     );
   };
 
-  const showCartUpdateOptions = cartUpdate => {
-    return cartUpdate && <div>increment/decrement</div>;
-  };
-
   useEffect(() => {
     const productId = product.match.params.productId;
     loadSingleProduct(productId);
@@ -74,7 +70,6 @@ const Product = (product, showAddToCartButton = true, cartUpdate = false) => {
             <h2>{productItem.price}€</h2>
             <div className='product-details'>{productItem.description}</div>
             {showAddToCart(showAddToCartButton)}
-            {showCartUpdateOptions(cartUpdate)}
           </div>
           <div className='imageProduct col-4'>
             <ShowImage item={productItem} url='product' />

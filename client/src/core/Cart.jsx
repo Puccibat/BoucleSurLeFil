@@ -4,12 +4,12 @@ import { getCart } from './cartHelpers';
 import Layout from './Layout';
 import Card from './Card';
 
-const Cart = () => {
+const Cart = cartUpdate => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
     setItems(getCart());
-  }, []);
+  }, [items]);
 
   const showItems = items => {
     return (
@@ -23,6 +23,7 @@ const Cart = () => {
               product={product}
               showAddToCartButton={false}
               cartUpdate={true}
+              showRemoveProductButton={true}
             />
           ))}
         </div>

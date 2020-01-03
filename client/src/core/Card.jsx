@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import ShowImage from './ShowImage';
 import { addItem } from './cartHelpers';
 
-const Card = ({ product, showAddToCartButton = true, cartUpdate = false }) => {
+const Card = ({ product, showAddToCartButton = true }) => {
   const [redirect, setRedirect] = useState(false);
 
   const addToCart = () => {
@@ -39,10 +39,6 @@ const Card = ({ product, showAddToCartButton = true, cartUpdate = false }) => {
     );
   };
 
-  // const showCartUpdateOptions = cartUpdate => {
-  //   return cartUpdate &&
-  // }
-
   return (
     <div className='col-3 mb-3'>
       <div className='card'>
@@ -50,7 +46,7 @@ const Card = ({ product, showAddToCartButton = true, cartUpdate = false }) => {
         <div className='card-body'>
           {shouldRedirect(redirect)}
           <ShowImage item={product} url='product' />
-          <p>{product.description.substring(0, 30)}</p>
+          <p>{product.description}</p>
           <p>€{product.price}</p>
           {showStock(product.quantity)}
           <br />

@@ -6,7 +6,7 @@ import ShowImage from './ShowImage';
 import { read } from './apiCore';
 import { addItem } from './cartHelpers';
 
-const Product = (product, showAddToCartButton = true) => {
+const Product = (product, showAddToCartButton = true, cartUpdate = false) => {
   const [productItem, setProductItem] = useState({});
   const [redirect, setRedirect] = useState(false);
   const [error, setError] = useState(false);
@@ -46,6 +46,10 @@ const Product = (product, showAddToCartButton = true) => {
     );
   };
 
+  const showCartUpdateOptions = cartUpdate => {
+    return cartUpdate && <div>increment/decrement</div>;
+  };
+
   useEffect(() => {
     const productId = product.match.params.productId;
     loadSingleProduct(productId);
@@ -53,7 +57,11 @@ const Product = (product, showAddToCartButton = true) => {
 
   return (
     <div>
-      <Layout title='' description='' />
+      <Layout
+        title='Product Page'
+        description='BoucleSurLeFil'
+        className='container-fluid'
+      />
       <div className='row justify-content-center'>
         <Categories />
       </div>
@@ -66,6 +74,7 @@ const Product = (product, showAddToCartButton = true) => {
             <h2>{productItem.price}€</h2>
             <div className='product-details'>{productItem.description}</div>
             {showAddToCart(showAddToCartButton)}
+            {showCartUpdateOptions(cartUpdate)}
           </div>
           <div className='imageProduct col-4'>
             <ShowImage item={productItem} url='product' />

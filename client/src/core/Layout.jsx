@@ -18,6 +18,7 @@ const Layout = ({
             Boucle Sur Le Fil
           </Link>
         </h1>
+        <hr />
       </div>
       <div className={className}>{children}</div>
     </div>

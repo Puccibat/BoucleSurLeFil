@@ -4,8 +4,8 @@ import Layout from './Layout';
 const About = () => {
   return (
     <Layout
-      title='About Me'
-      description='Young creator'
+      title='About'
+      description='BoucleSurLeFil'
       className='container-fluid'
     >
       <div>

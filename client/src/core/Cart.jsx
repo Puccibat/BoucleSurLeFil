@@ -16,14 +16,16 @@ const Cart = () => {
       <div>
         <h2>Your cart has {`${items.length}`} items</h2>
         <hr />
-        {items.map((product, index) => (
-          <Card
-            key={index}
-            product={product}
-            showAddToCartButton={false}
-            cartUpdate={true}
-          />
-        ))}
+        <div className='row'>
+          {items.map((product, index) => (
+            <Card
+              key={index}
+              product={product}
+              showAddToCartButton={false}
+              cartUpdate={true}
+            />
+          ))}
+        </div>
       </div>
     );
   };
@@ -32,7 +34,7 @@ const Cart = () => {
     return (
       <div>
         <h2>
-          Your cart is empty <br /> <Link to='/shop'>Continue shopping</Link>
+          Your cart is empty <br /> <Link to='/'>Continue shopping</Link>
         </h2>
         ;
       </div>
@@ -40,20 +42,21 @@ const Cart = () => {
   };
 
   return (
-    <Layout
-      title='Shopping Cart'
-      description='Manage your cart items'
-      className='container-fluid'
-    >
+    <div>
+      <Layout
+        title='Shopping Cart'
+        description='BoucleSurLeFil'
+        className='container-fluid'
+      />
       <div className='row'>
-        <div className='col-6'>
+        <div className='col-8'>
           {items.length > 0 ? showItems(items) : noItemsMessage()}
         </div>
-        <div className='col-6'>
+        <div className='col-4'>
           <p>Show checkout, shipping adress/total/update quantity</p>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 

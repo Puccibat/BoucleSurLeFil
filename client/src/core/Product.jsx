@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from './Layout';
+import ShowImage from './ShowImage';
 import { read } from './apiCore';
-import Card from './Card';
 
 const Product = props => {
   const [product, setProduct] = useState({});
@@ -24,6 +24,7 @@ const Product = props => {
 
   return (
     <Layout title='' description='' className='container-fluid'>
+      <ShowImage item={product} url='product' />
       <h2 className='mb-4'>{product.name}</h2>
       <div className='row'>{product.description}</div>
     </Layout>

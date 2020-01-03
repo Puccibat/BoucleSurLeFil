@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Layout from './Layout';
 import { getProducts } from './apiCore';
 import Card from './Card';
+import Categories from './Categories';
 
 const Home = () => {
   const [productsBySell, setPorductsBySell] = useState([]);
@@ -39,6 +40,10 @@ const Home = () => {
       description='BoucleSurLeFil'
       className='container-fluid'
     >
+      <div className='row justify-content-center'>
+        <Categories />
+      </div>
+
       <h2 className='mb-4'>New arrivals</h2>
       <div className='row'>
         {productsByArrival.map((product, index) => (

@@ -29,7 +29,7 @@
 * jumbotron animation
 **/
 
-.jumbotron {
+/* .jumbotron {
   width: 30wh;
   height: 30vh;
   color: #fff;
@@ -38,13 +38,18 @@
   -webkit-animation: Gradient 15s ease infinite;
   -moz-animation: Gradient 15s ease infinite;
   animation: Gradient 15s ease infinite;
-}
+} */
 
-.product-page-heading {
+.product-page-heading,
+.title {
   font-family: 'Rochester', cursive;
 }
 .product-details {
   font-family: 'Quicksand', sans-serif;
+}
+
+.title {
+  font-size: 100px;
 }
 
 @-webkit-keyframes Gradient {

@@ -23,7 +23,7 @@ const Card = ({ product, showAddToCartButton = true, cartUpdate = false }) => {
       showAddToCartButton && (
         <button
           onClick={addToCart}
-          className='btn btn-outline-warning mt-2 mb-2'
+          className='btn btn-outline-danger mt-2 mb-2'
         >
           Add to card
         </button>
@@ -50,7 +50,7 @@ const Card = ({ product, showAddToCartButton = true, cartUpdate = false }) => {
         <div className='card-body'>
           {shouldRedirect(redirect)}
           <ShowImage item={product} url='product' />
-          <p>{product.description.substring(0, 50)}</p>
+          <p>{product.description.substring(0, 30)}</p>
           <p>€{product.price}</p>
           {showStock(product.quantity)}
           <br />

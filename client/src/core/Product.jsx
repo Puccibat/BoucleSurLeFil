@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import Layout from './Layout';
+import Categories from './Categories';
 import ShowImage from './ShowImage';
 import { read } from './apiCore';
 import { addItem } from './cartHelpers';
@@ -37,7 +38,7 @@ const Product = (product, showAddToCartButton = true) => {
       showAddToCartButton && (
         <button
           onClick={addToCart}
-          className='btn btn-outline-warning mt-2 mb-2'
+          className='btn btn-outline-danger mt-2 mb-2'
         >
           Add to card
         </button>
@@ -53,17 +54,24 @@ const Product = (product, showAddToCartButton = true) => {
   return (
     <div>
       <Layout title='' description='' />
-      <div className='container-fluid main'>
-        <div className='product-page'>
-          <div className='product-page-heading'>
+      <div className='row justify-content-center'>
+        <Categories />
+      </div>
+      <div className='container main mt-5'>
+        <div className='product-page row'>
+          <div className='col-2'></div>
+          <div className='product-page-heading col-4'>
             <h1 className=''>{productItem.name}</h1>
             <h1 className='title-dash'></h1>
             <h2>{productItem.price}€</h2>
+            <div className='product-details'>{productItem.description}</div>
+            {showAddToCart(showAddToCartButton)}
           </div>
-          <div className='product-details'>{productItem.description}</div>
-          {showAddToCart(showAddToCartButton)}
+          <div className='imageProduct col-4'>
+            <ShowImage item={productItem} url='product' />
+          </div>
+          <div className='col-2'></div>
         </div>
-        <ShowImage item={productItem} url='product' />
       </div>
     </div>
   );

@@ -42,7 +42,7 @@ const Cart = ({
                     <ShowImage item={product} url='product' />
                   </th>
                   <td>{product.name}</td>
-                  <td>{product.price}</td>
+                  <td>{product.price}€</td>
                   <td>{showRemoveButton(showRemoveProductButton)}</td>
                   {/* <td>{showCartUpdateOptions(cartUpdate)}</td> */}
                 </tr>

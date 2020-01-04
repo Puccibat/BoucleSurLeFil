@@ -22,7 +22,7 @@ const Product = (product, showAddToCartButton = true) => {
   };
 
   const addToCart = () => {
-    addItem(product, () => {
+    addItem(productItem, () => {
       setRedirect(true);
     });
   };

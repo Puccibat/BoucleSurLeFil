@@ -11,7 +11,7 @@ const Checkout = ({ products }) => {
 
   return (
     <div>
-      <h2>Total: ${getTotal()}</h2>
+      <h2>Total: {getTotal()}€</h2>
       <button className='btn btn-success'>Checkout</button>
     </div>
   );

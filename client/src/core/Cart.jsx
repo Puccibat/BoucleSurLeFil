@@ -53,7 +53,7 @@ const Cart = cartUpdate => {
         description='BoucleSurLeFil'
         className='container-fluid'
       />
-      <div className='row'>
+      <div className='row ml-1 mr-1'>
         <div className='col-8'>
           {items.length > 0 ? showItems(items) : noItemsMessage()}
         </div>

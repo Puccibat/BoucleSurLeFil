@@ -5,10 +5,11 @@ import {
   getBraintreeClientToken,
   processPayment
 } from './apiCore';
+import { emptyCart } from './cartHelpers';
 import DropIn from 'braintree-web-drop-in-react';
 import { token } from 'morgan';
 
-const Checkout = ({ products }) => {
+const Checkout = ({ products, setRun = f => f, run = undefined }) => {
   const [data, setData] = useState({
     success: false,
     clientToken: null,
@@ -53,6 +54,10 @@ const Checkout = ({ products }) => {
           .then(response => {
             // console.log(response)
             setData({ ...data, success: response.success });
+            emptyCart(() => {
+              setRun(!run);
+              console.log('payment success and empty cart');
+            });
           })
           .catch(error => console.log(error));
       })

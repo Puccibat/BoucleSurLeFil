@@ -41,7 +41,6 @@ const Cart = cartUpdate => {
         <h2>
           Your cart is empty <br /> <Link to='/'>Continue shopping</Link>
         </h2>
-        ;
       </div>
     );
   };
@@ -60,7 +59,7 @@ const Cart = cartUpdate => {
         <div className='col-4'>
           <h2 className='mb-4'>Your cart summary</h2>
           <hr />
-          <Checkout products={items} />
+          <Checkout setRun={setRun} products={items} />
         </div>
       </div>
     </div>

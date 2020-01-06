@@ -3,7 +3,8 @@ import Layout from './Layout';
 import {
   getProducts,
   getBraintreeClientToken,
-  processPayment
+  processPayment,
+  createOrder
 } from './apiCore';
 import { emptyCart } from './cartHelpers';
 import DropIn from 'braintree-web-drop-in-react';
@@ -32,6 +33,10 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
     getToken();
   }, []);
 
+  const handleAddress = event => {
+    setData({ ...data, address: event.target.value });
+  };
+
   const getTotal = () => {
     return products.reduce((currentValue, nextValue) => {
       return currentValue + nextValue.count * nextValue.price;
@@ -52,7 +57,17 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
 
         processPayment(data, paymentData)
           .then(response => {
-            // console.log(response)
+            console.log(response);
+
+            const createOrderData = {
+              products: products,
+              transaction_id: response.transaction_id,
+              amount: response.transaction.amount,
+              address: data.address
+            };
+
+            createOrder(data, createOrderData);
+
             setData({ ...data, success: response.success });
             emptyCart(() => {
               setRun(!run);
@@ -71,6 +86,15 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
     <div onBlur={() => setData({ ...data, error: '' })}>
       {data.clientToken !== null && products.length > 0 ? (
         <div>
+          <div className='form-group mb-3'>
+            <label className='text-muted'>Delivery Address:</label>
+            <textarea
+              onChange={handleAddress}
+              className='form-control'
+              value={data.address}
+              placeholder='Type your delivery address here'
+            ></textarea>
+          </div>
           <DropIn
             options={{
               authorization: data.clientToken

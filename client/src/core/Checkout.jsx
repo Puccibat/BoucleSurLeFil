@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from './Layout';
 import { getProducts } from './apiCore';
+import StripeButton from './StripeButton';
 
 const Checkout = ({ products }) => {
   const getTotal = () => {
@@ -12,7 +13,7 @@ const Checkout = ({ products }) => {
   return (
     <div>
       <h2>Total: {getTotal()}€</h2>
-      <button className='btn btn-success'>Checkout</button>
+      <StripeButton price={getTotal()} />
     </div>
   );
 };

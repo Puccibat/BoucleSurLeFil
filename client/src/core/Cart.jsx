@@ -15,7 +15,7 @@ const Cart = cartUpdate => {
 
   const showItems = items => {
     return (
-      <div>
+      <div className='container'>
         <h2>Your cart has {`${items.length}`} items</h2>
         <hr />
         <div className='row'>

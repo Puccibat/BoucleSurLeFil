@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Layout from './Layout';
-import Card from './Card';
 import { getCategories } from './apiCore';
 import Checkbox from './Checkbox';
 

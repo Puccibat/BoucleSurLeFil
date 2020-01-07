@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Layout from './Layout';
 import {
-  getProducts,
   getBraintreeClientToken,
   processPayment,
   createOrder
 } from './apiCore';
 import { emptyCart } from './cartHelpers';
 import DropIn from 'braintree-web-drop-in-react';
-import { token } from 'morgan';
 
 const Checkout = ({ products, setRun = f => f, run = undefined }) => {
   const [data, setData] = useState({

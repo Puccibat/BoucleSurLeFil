@@ -5,7 +5,7 @@ import { isAuth } from '../auth/index';
 
 const AdminDashboard = () => {
   const {
-    user: { _id, name, email, role }
+    user: { name, email, role }
   } = isAuth();
 
   const adminLinks = () => {
@@ -21,6 +21,11 @@ const AdminDashboard = () => {
           <li className='list-group-item'>
             <Link className='nav-link' to='/create/product'>
               Create Product
+            </Link>
+          </li>
+          <li className='list-group-item'>
+            <Link className='nav-link' to='/admin/orders'>
+              View Orders
             </Link>
           </li>
         </ul>

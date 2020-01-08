@@ -83,7 +83,7 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
 
   const showDropIn = () => (
     <div
-      className='container mb-5'
+      className='container mb-5 fontSnd'
       onBlur={() => setData({ ...data, error: '' })}
     >
       {data.clientToken !== null && products.length > 0 ? (
@@ -131,7 +131,7 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
 
   return (
     <div>
-      <h2>Total: {getTotal()}€</h2>
+      <h2 className='fontSnd'>Total: {getTotal()}€</h2>
       {showSuccess(data.success)}
       {showError(data.error)}
       {showDropIn()}

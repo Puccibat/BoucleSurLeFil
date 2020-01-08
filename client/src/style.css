@@ -33,7 +33,8 @@
   font-family: 'Rochester', cursive;
 }
 .product-details,
-.card-body {
+.card-body,
+.fontSnd {
   font-family: 'Quicksand', sans-serif;
 }
 

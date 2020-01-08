@@ -3,120 +3,92 @@ import { Link, withRouter } from 'react-router-dom';
 import { signout, isAuth } from '../auth/index';
 import { itemTotal } from './cartHelpers';
 
-const isActive = (history, path) => {
-  if (history.location.pathname === path) {
-    return { color: '#000000' };
-  } else {
-    return { color: '#ffffff' };
-  }
-};
+// const isActive = (history, path) => {
+//   if (history.location.pathname === path) {
+//     return { color: '#000000' };
+//   } else {
+//     return { color: '#ffffff' };
+//   }
+// };
 
 const Menu = ({ history }) => {
   return (
-    <div>
-      <ul className='nav nav-tabs bg-danger'>
-        <li className='nav-item'>
-          <Link className='nav-link' style={isActive(history, '/')} to='/'>
-            Home
-          </Link>
-        </li>
-
-        {/* <li className='nav-item'>
-          <Link
-            className='nav-link'
-            style={isActive(history, '/shop')}
-            to='/shop'
-          >
-            Shop
-          </Link>
-        </li> */}
-
-        <li className='nav-item'>
-          <Link
-            className='nav-link'
-            style={isActive(history, '/about')}
-            to='/about'
-          >
-            About
-          </Link>
-        </li>
-
-        {isAuth() && isAuth().user.role === 0 && (
-          <li className='nav-item'>
-            <Link
-              className='nav-link'
-              style={isActive(history, '/user/dashboard')}
-              to='/user/dashboard'
-            >
-              Dashboard
+    <div className='container'>
+      <div className='row justify-content-center navbar navbar-expand-lg'>
+        <ul className='navbar-nav heading' style={{ fontSize: '25px' }}>
+          <li className='nav-item col-2'>
+            <Link className='nav-link  menu' to='/'>
+              Home
             </Link>
           </li>
-        )}
-
-        {isAuth() && isAuth().user.role === 1 && (
-          <li className='nav-item'>
-            <Link
-              className='nav-link'
-              style={isActive(history, '/admin/dashboard')}
-              to='/admin/dashboard'
-            >
-              Dashboard
+          <li className='nav-item col-2'>
+            <Link className='nav-link  menu' to='/about'>
+              About
             </Link>
           </li>
-        )}
 
-        {!isAuth() && (
-          <Fragment>
-            <li className='nav-item'>
-              <Link
-                className='nav-link'
-                style={isActive(history, '/signin')}
-                to='/signin'
-              >
-                Signin
+          {isAuth() && isAuth().user.role === 0 && (
+            <li className='nav-item col-3'>
+              <Link className='nav-link  menu' to='/user/dashboard'>
+                Dashboard
               </Link>
             </li>
-            <li className='nav-item'>
-              <Link
-                className='nav-link'
-                style={isActive(history, '/signup')}
-                to='/signup'
-              >
-                Signup
+          )}
+
+          {isAuth() && isAuth().user.role === 1 && (
+            <li className='nav-item col-3'>
+              <Link className='nav-link menu' to='/admin/dashboard'>
+                Dashboard
               </Link>
             </li>
-          </Fragment>
-        )}
+          )}
 
-        {isAuth() && (
-          <li className='nav-item'>
-            <span
-              className='nav-link'
-              style={{ cursor: 'pointer', color: '#ffffff' }}
-              onClick={() =>
-                signout(() => {
-                  history.push('/');
-                })
-              }
-            >
-              Signout
-            </span>
+          {!isAuth() && (
+            <Fragment>
+              <li className='nav-item col-2'>
+                <Link className='nav-link menu' to='/signin'>
+                  Signin
+                </Link>
+              </li>
+              <li className='nav-item col-2'>
+                <Link className='nav-link menu' to='/signup'>
+                  Signup
+                </Link>
+              </li>
+            </Fragment>
+          )}
+
+          {isAuth() && (
+            <li className='nav-item col-2'>
+              <a
+                className='nav-link menu'
+                href='#'
+                onClick={() =>
+                  signout(() => {
+                    history.push('/');
+                  })
+                }
+              >
+                Signout
+              </a>
+            </li>
+          )}
+
+          <li className='nav-item col-2'>
+            <Link className='nav-link menu' to='/cart'>
+              Cart
+              {itemTotal() > 0 ? (
+                <sup>
+                  <small className='cart-badge' style={{ color: '#ffffff' }}>
+                    {itemTotal()}
+                  </small>
+                </sup>
+              ) : null}
+            </Link>
           </li>
-        )}
-
-        <li className='nav-item'>
-          <Link
-            className='nav-link'
-            style={isActive(history, '/cart')}
-            to='/cart'
-          >
-            Cart{''}
-            <sup>
-              <small className='cart-badge'>{itemTotal()}</small>
-            </sup>
-          </Link>
-        </li>
-      </ul>
+        </ul>
+      </div>
+      <hr />
     </div>
   );
 };

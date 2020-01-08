@@ -2,7 +2,6 @@
 * border radius
 **/
 .btn,
-.jumbotron,
 .nav :hover {
   border-radius: 0px;
 }
@@ -19,10 +18,23 @@
 **/
 .cart-badge,
 .cart-badge:hover {
+  margin-left: 5px;
   border-radius: 50%;
   padding: 2px;
   font-size: 12px;
   background: #951616;
+}
+
+.menu:hover,
+.menu {
+  color: #951616;
+  font-size: 40px;
+}
+
+.menuC:hover,
+.menuC {
+  color: #000000;
+  font-size: 25px;
 }
 
 .product-page-heading,
@@ -39,7 +51,12 @@
 }
 
 .title {
-  font-size: 100px;
+  font-size: 120px;
+}
+
+.titleHome {
+  font-size: 60px;
+  font-family: 'Rochester', cursive;
 }
 
 .btn {

@@ -52,17 +52,15 @@ const Cart = cartUpdate => {
         description='BoucleSurLeFil'
         className='container-fluid'
       />
-      <div className='row ml-1 mr-1'>
-        <div className='col-8'>
-          {items.length > 0 ? showItems(items) : noItemsMessage()}
-        </div>
-        <div className='col-4'>
-          <h2 className='mb-4'>Your cart summary</h2>
-          <hr />
-          <Checkout setRun={setRun} products={items} />
-        </div>
+      {/* <div className='row ml-1 mr-1'> */}
+      <div>{items.length > 0 ? showItems(items) : noItemsMessage()}</div>
+      <div className='container'>
+        <h2 className='mb-4 mt-5'>Your cart summary</h2>
+        <hr />
+        <Checkout setRun={setRun} products={items} />
       </div>
     </div>
+    // </div>
   );
 };
 

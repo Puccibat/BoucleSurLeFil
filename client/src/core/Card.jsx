@@ -92,7 +92,7 @@ const Card = ({
   };
 
   return (
-    <div className='col-3 mb-3'>
+    <div className='col-sm-4 mb-3'>
       <div className='card'>
         <div className='card-header'>{product.name}</div>
         <div className='card-body'>

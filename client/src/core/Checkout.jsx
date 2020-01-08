@@ -82,7 +82,10 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
   };
 
   const showDropIn = () => (
-    <div onBlur={() => setData({ ...data, error: '' })}>
+    <div
+      className='container mb-5'
+      onBlur={() => setData({ ...data, error: '' })}
+    >
       {data.clientToken !== null && products.length > 0 ? (
         <div>
           <div className='form-group mb-3'>

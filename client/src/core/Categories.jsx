@@ -4,7 +4,7 @@ const Categories = () => {
   return (
     <div>
       <div className='navbar navbar-expand-lg'>
-        <ul className='navbar-nav'>
+        <ul className='navbar-nav heading' style={{ fontSize: '25px' }}>
           <li className='nav-item active'>
             <a className='nav-link' href='#'>
               Colliers

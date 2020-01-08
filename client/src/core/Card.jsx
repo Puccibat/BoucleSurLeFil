@@ -94,12 +94,16 @@ const Card = ({
   return (
     <div className='col-sm-4 mb-3'>
       <div className='card'>
-        <div className='card-header'>{product.name}</div>
+        <div className='card-header' style={{ fontSize: '25px' }}>
+          {product.name}
+        </div>
         <div className='card-body'>
           {shouldRedirect(redirect)}
           <ShowImage item={product} url='product' />
           <p>{product.description}</p>
-          <p>€{product.price}</p>
+          <p className='heading' style={{ fontSize: '25px', color: '#951616' }}>
+            {product.price}€
+          </p>
           {showStock(product.quantity)}
           <br />
           <Link to={`/product/${product._id}`}>

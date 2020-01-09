@@ -42,7 +42,9 @@ const ManageProducts = () => {
     >
       <div className='row'>
         <div className='col-12'>
-          <h2 className='text-center'>Total {products.length} products</h2>
+          <h2 className='text-center'>
+            Nombre total de produit: {products.length}
+          </h2>
           <hr />
           <ul className='list-group'>
             {products.map((product, index) => (
@@ -52,13 +54,13 @@ const ManageProducts = () => {
               >
                 <strong>{product.name}</strong>
                 <Link to={`/admin/product/update/${product._id}`}>
-                  <button className='btn btn-warning'>Update</button>
+                  <button className='btn btn-warning'>Mettre à jour</button>
                 </Link>
                 <button
                   onClick={() => destroy(product._id)}
                   className='btn btn-danger'
                 >
-                  Delete
+                  Supprimer
                 </button>
               </li>
             ))}

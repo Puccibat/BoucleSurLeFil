@@ -43,10 +43,10 @@ const Orders = () => {
   const showOrdersLength = () => {
     if (orders.length > 0) {
       return (
-        <h1 className='text-danger display-2'>Total orders: {orders.length}</h1>
+        <h1 className='text display-2'>Total des commandes: {orders.length}</h1>
       );
     } else {
-      return <h1 className='text-danger'>No orders</h1>;
+      return <h1 className='text-danger'>Pas de commande</h1>;
     }
   };
 
@@ -73,12 +73,12 @@ const Orders = () => {
 
   const showStatus = order => (
     <div className='form-group'>
-      <h3 className='mark mb-4'>Status: {order.status}</h3>
+      <h3 className='mark mb-4'>Statut: {order.status}</h3>
       <select
         className='form-control'
         onChange={event => handleStatusChange(event, order._id)}
       >
-        <option>Update Status</option>
+        <option>Mettre à jour le statut</option>
         {statusValues.map((status, index) => (
           <option key={index} value={status}>
             {status}
@@ -106,27 +106,27 @@ const Orders = () => {
                 style={{ borderBottom: '5px solid red' }}
               >
                 <h2 className='mb-5'>
-                  <span className='bg-primary'>Order ID: {order._id}</span>
+                  <span>Commande ID: {order._id}</span>
                 </h2>
                 <ul className='list-group mb-2'>
                   <li className='list-group-item'>{showStatus(order)}</li>
                   <li className='list-group-item'>
                     Transaction ID: {order.transaction_id}
                   </li>
-                  <li className='list-group-item'>Amount: {order.amount}€</li>
+                  <li className='list-group-item'>Montant: {order.amount}€</li>
                   <li className='list-group-item'>
-                    Ordered on: {moment(order.createdAt).fromNow()}
+                    Commandé le: {moment(order.createdAt).fromNow()}
                   </li>
                   <li className='list-group-item'>
                     Nom de livraison: {order.clientName}
                   </li>
                   <li className='list-group-item'>
-                    Delivery address: {order.address}
+                    Adresse de livraison: {order.address}
                   </li>
                 </ul>
 
                 <h3 className='mt-4 mb-4 font-italic'>
-                  Total products in the order: {order.products.length}
+                  Nombre de produit dans la commande: {order.products.length}
                 </h3>
                 {order.products.map((product, productIndex) => (
                   <div
@@ -134,10 +134,10 @@ const Orders = () => {
                     key={productIndex}
                     style={{ padding: '20px', border: '1px solid red' }}
                   >
-                    {showInput('Product name', product.name)}
-                    {showInput('Product price', product.price)}
-                    {showInput('Product total', product.count)}
-                    {showInput('Product ID', product._id)}
+                    {showInput('Nom du produit', product.name)}
+                    {showInput('Prix', product.price)}
+                    {showInput('Nombre de produit', product.count)}
+                    {showInput('Produit ID', product._id)}
                   </div>
                 ))}
               </div>

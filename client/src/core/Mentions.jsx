@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from './Layout';
 import Footer from './Footer';
 
-const About = () => {
+const Mentions = () => {
   return (
     <Layout
       title='About'
@@ -10,7 +10,7 @@ const About = () => {
       className='container-fluid'
     >
       <div className='container text-center fontSnd'>
-        <h2>Alix</h2>
+        <h2>Mentions légales</h2>
         <p>
           Le Lorem Ipsum est simplement du faux texte employé dans la
           composition et la mise en page avant impression. Le Lorem Ipsum est le
@@ -40,4 +40,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Mentions;

@@ -40,7 +40,10 @@ const Cart = cartUpdate => {
     return (
       <div className='container'>
         <h2 className='fontSnd'>
-          Your cart is empty <br /> <Link to='/'>Continue shopping</Link>
+          Votre panier est vide <br />{' '}
+          <Link to='/' style={{ color: '#000000' }}>
+            Continuer mes achats
+          </Link>
         </h2>
       </div>
     );
@@ -55,7 +58,7 @@ const Cart = cartUpdate => {
       />
       <div>{items.length > 0 ? showItems(items) : noItemsMessage()}</div>
       <div className='container'>
-        <h2 className='mb-4 mt-5 fontSnd'>Your cart summary</h2>
+        <h2 className='mb-4 mt-5 fontSnd'>Votre panier</h2>
         <hr />
         <Checkout setRun={setRun} products={items} />
       </div>

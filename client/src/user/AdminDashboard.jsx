@@ -13,25 +13,25 @@ const AdminDashboard = () => {
     return (
       <div className='card'>
         <h4 className='card-header'>Admin</h4>
-        <ul className='list-group'>
+        <ul className='list-group fontSnd'>
           <li className='list-group-item'>
             <Link className='nav-link' to='/create/category'>
-              Create Category
+              Créer une catégorie
             </Link>
           </li>
           <li className='list-group-item'>
             <Link className='nav-link' to='/create/product'>
-              Create Product
+              Créer un produit
             </Link>
           </li>
           <li className='list-group-item'>
             <Link className='nav-link' to='/admin/orders'>
-              View Orders
+              Voir les commandes
             </Link>
           </li>
           <li className='list-group-item'>
             <Link className='nav-link' to='/admin/products'>
-              Manage Product
+              Gérer les produits
             </Link>
           </li>
         </ul>
@@ -42,8 +42,8 @@ const AdminDashboard = () => {
   const adminInfo = () => {
     return (
       <div className='card mb-5'>
-        <h3 className='card-header'>User information</h3>
-        <ul className='list-group'>
+        <h3 className='card-header'>Mes informations</h3>
+        <ul className='list-group fontSnd'>
           <li className='list-group-item'>{name}</li>
           <li className='list-group-item'>{email}</li>
           <li className='list-group-item'>

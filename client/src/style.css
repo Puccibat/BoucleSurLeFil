@@ -28,7 +28,7 @@
 .menu:hover,
 .menu {
   color: #951616;
-  font-size: 40px;
+  font-size: 32px;
 }
 
 .nav-item {
@@ -55,7 +55,7 @@
 }
 
 .title {
-  font-size: 120px;
+  font-size: 64px;
 }
 
 .titleHome {

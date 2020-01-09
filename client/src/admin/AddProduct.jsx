@@ -77,7 +77,7 @@ const AddProduct = () => {
 
   const newPostForm = () => (
     <form className='mb-3' onSubmit={clickSubmit}>
-      <h4>Post Photo</h4>
+      <h4>Ajouter Photo</h4>
       <div className='form-group'>
         <label className='btn btn-secondary'>
           <input
@@ -90,7 +90,7 @@ const AddProduct = () => {
       </div>
 
       <div className='form-group'>
-        <label className='text-muted'>Name</label>
+        <label className='text-muted'>Nom</label>
         <input
           onChange={handleChange('name')}
           type='text'
@@ -109,7 +109,7 @@ const AddProduct = () => {
       </div>
 
       <div className='form-group'>
-        <label className='text-muted'>Price</label>
+        <label className='text-muted'>Prix</label>
         <input
           onChange={handleChange('price')}
           type='number'
@@ -119,9 +119,9 @@ const AddProduct = () => {
       </div>
 
       <div className='form-group'>
-        <label className='text-muted'>Category</label>
+        <label className='text-muted'>Categorie</label>
         <select onChange={handleChange('category')} className='form-control'>
-          <option>Please select a category</option>
+          <option>Sélectionnez une catégorie</option>
           {categories &&
             categories.map((category, index) => (
               <option key={index} value={category._id}>
@@ -132,7 +132,7 @@ const AddProduct = () => {
       </div>
 
       <div className='form-group'>
-        <label className='text-muted'>Quantity</label>
+        <label className='text-muted'>Quantité</label>
         <input
           onChange={handleChange('quantity')}
           type='number'
@@ -141,7 +141,7 @@ const AddProduct = () => {
         />
       </div>
 
-      <button className='btn btn-outline-primary'>Create Product</button>
+      <button className='btn btn-outline-primary'>Créer Produit</button>
     </form>
   );
 
@@ -159,7 +159,7 @@ const AddProduct = () => {
       className='alert alert-info'
       style={{ display: createdProduct ? '' : 'none' }}
     >
-      <h2>{`${createdProduct} is created !`}</h2>
+      <h2>{`${createdProduct} est créé !`}</h2>
     </div>
   );
 
@@ -173,7 +173,7 @@ const AddProduct = () => {
   return (
     <Layout
       title='Add a new product'
-      description={`Hey ${user.name} ! Please add a new product`}
+      description={`Hey ${user.name} ! Ajoute un nouveau produit`}
       className='container'
     >
       <div className='row'>

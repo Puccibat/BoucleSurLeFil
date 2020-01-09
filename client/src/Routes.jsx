@@ -11,6 +11,8 @@ import AdminDashboard from './user/AdminDashboard';
 import AddCategories from './admin/AddCategories';
 import AddProduct from './admin/AddProduct';
 import Product from './core/Product';
+import Mentions from './core/Mentions';
+import Cgv from './core/Cgv';
 import Bijoux from './core/Bijoux';
 import Cart from './core/Cart';
 import Orders from './admin/Orders';
@@ -25,6 +27,8 @@ const Routes = () => {
         <Route path='/bijoux' exact component={Bijoux} />
         <Route path='/product/:productId' exact component={Product} />
         <Route path='/about' exact component={About} />
+        <Route path='/mentionsLegales' exact component={Mentions} />
+        <Route path='/conditionsGenerales' exact component={Cgv} />
         <Route path='/signup' exact component={Signup} />
         <Route path='/signin' exact component={Signin} />
         <PrivateRoute path='/user/dashboard' exact component={UserDashboard} />

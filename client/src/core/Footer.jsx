@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -8,7 +9,7 @@ const Footer = () => {
           <hr />
           <div className='row mt-5 mb-5 ml-5'>
             <div className='col-sm-4'>
-              <a href='#'>Mentions légales</a>
+              <Link to='/mentionsLegales'>Mentions légales</Link>
             </div>
             <div className='col-sm-4'>
               <a
@@ -35,7 +36,9 @@ const Footer = () => {
               </a>
             </div>
             <div className='col-sm-4'>
-              <a href='#'>Conditions générales de ventes</a>
+              <Link to='/conditionsGenerales'>
+                Conditions générales de ventes
+              </Link>
             </div>
           </div>
         </div>

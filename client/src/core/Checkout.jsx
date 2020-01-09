@@ -13,6 +13,7 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
     clientToken: null,
     error: '',
     instance: {},
+    clientName: '',
     address: ''
   });
 
@@ -34,6 +35,10 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
     setData({ ...data, address: event.target.value });
   };
 
+  const handleClientName = event => {
+    setData({ ...data, clientName: event.target.value });
+  };
+
   const getTotal = () => {
     return products.reduce((currentValue, nextValue) => {
       return currentValue + nextValue.count * nextValue.price;
@@ -41,6 +46,7 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
   };
 
   const deliveryAddress = data.address;
+  const deliveryName = data.clientName;
 
   const buy = () => {
     let nonce;
@@ -62,7 +68,8 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
               products: products,
               transaction_id: response.transaction.id,
               amount: response.transaction.amount,
-              address: deliveryAddress
+              address: deliveryAddress,
+              clientName: deliveryName
             };
 
             createOrder(data, createOrderData);
@@ -88,15 +95,27 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
     >
       {data.clientToken !== null && products.length > 0 ? (
         <div>
-          <div className='form-group mb-3'>
-            <label className='text-muted'>Delivery Address:</label>
-            <textarea
-              onChange={handleAddress}
-              className='form-control'
-              value={data.address}
-              placeholder='Type your delivery address here'
-            ></textarea>
+          <div className='from-row'>
+            <div className='form-group mb-3'>
+              <label className='text-muted'>Nom de livraison:</label>
+              <input
+                onChange={handleClientName}
+                className='form-control'
+                value={data.clientName}
+                placeholder='Votre nom'
+              ></input>
+            </div>
+            <div className='form-group mb-3'>
+              <label className='text-muted'>Adresse de livraison:</label>
+              <textarea
+                onChange={handleAddress}
+                className='form-control'
+                value={data.address}
+                placeholder='Entrez votre adresse ici (adresse, ville, code postal...)'
+              ></textarea>
+            </div>
           </div>
+
           <DropIn
             options={{
               authorization: data.clientToken

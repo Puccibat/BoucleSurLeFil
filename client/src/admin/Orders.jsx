@@ -118,6 +118,9 @@ const Orders = () => {
                     Ordered on: {moment(order.createdAt).fromNow()}
                   </li>
                   <li className='list-group-item'>
+                    Nom de livraison: {order.clientName}
+                  </li>
+                  <li className='list-group-item'>
                     Delivery address: {order.address}
                   </li>
                 </ul>

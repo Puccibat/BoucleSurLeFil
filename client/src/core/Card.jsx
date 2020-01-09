@@ -33,7 +33,7 @@ const Card = ({
           onClick={addToCart}
           className='btn btn-outline-danger mt-2 mb-2'
         >
-          Add to card
+          Ajouter au panier
         </button>
       )
     );
@@ -49,7 +49,7 @@ const Card = ({
           }}
           className='btn btn-outline-danger mt-2 mb-2'
         >
-          Remove Product
+          Enlever produit
         </button>
       )
     );
@@ -69,7 +69,7 @@ const Card = ({
         <div>
           <div className='input-group mb-3'>
             <div className='input-group-prepend'>
-              <span className='input-group-text'>Quantity</span>
+              <span className='input-group-text'>Quantité</span>
             </div>
             <input
               type='number'
@@ -85,9 +85,9 @@ const Card = ({
 
   const showStock = quantity => {
     return quantity > 0 ? (
-      <span className='badge badge-primary badge-pill'>In stock</span>
+      <span className='badge badge-primary badge-pill'>Disponible</span>
     ) : (
-      <span className='badge badge-danger badge-pill'>Out of Stock</span>
+      <span className='badge badge-danger badge-pill'>Rupture</span>
     );
   };
 
@@ -107,7 +107,7 @@ const Card = ({
           <br />
           <Link to={`/product/${product._id}`}>
             <button className='btn btn-outline-primary mt-2 mb-2 mr-2'>
-              View Product
+              Voir le produit
             </button>
           </Link>
           {showAddToCart(showAddToCartButton)}

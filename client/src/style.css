@@ -35,10 +35,10 @@
   padding: 10px;
 }
 
-.menuC:hover,
 .menuC {
   color: #000000;
   font-size: 25px;
+  cursor: pointer;
 }
 
 .product-page-heading,

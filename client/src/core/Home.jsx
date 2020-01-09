@@ -45,14 +45,14 @@ const Home = () => {
       description='BoucleSurLeFil'
       className='container-fluid'
     >
-      <h2 className='mb-4 titleHome'>New arrivals</h2>
+      <h2 className='mb-4 titleHome'>Nouveautés</h2>
       <div className='row'>
         {productsByArrival.map((product, index) => (
           <Card key={index} product={product} />
         ))}
       </div>
 
-      <h2 className='mb-4 mt-5 titleHome'>Best sellers</h2>
+      <h2 className='mb-4 mt-5 titleHome'>Meilleurs ventes</h2>
       <div className='row'>
         {productsBySell.map((product, index) => (
           <Card key={index} product={product} />

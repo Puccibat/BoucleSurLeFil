@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-const Categories = ({ categories, loadProductbyCategory }) => {
+const Categories = ({
+  categories,
+  loadProductbyCategory,
+  loadProductsByArrival
+}) => {
   return (
     <div>
       <div className='navbar navbar-expand-lg'>

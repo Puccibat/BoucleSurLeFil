@@ -9,7 +9,6 @@ const Categories = ({ categories, loadProductbyCategory }) => {
             <li key={index} className='nav-item active' category={category}>
               <a
                 className='nav-link menuC'
-                href='#'
                 value={category._id}
                 onClick={() => loadProductbyCategory(category._id)}
               >

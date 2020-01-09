@@ -20,8 +20,8 @@ export const getCategories = () => {
     .catch(error => console.log(error));
 };
 
-export const getProductsByCategory = productId => {
-  return fetch(`${API}/products/productsByCategory/${productId}`, {
+export const getProductsByCategory = categoryId => {
+  return fetch(`${API}/products/productsByCategory/${categoryId}`, {
     method: 'GET'
   })
     .then(response => {

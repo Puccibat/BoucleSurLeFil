@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from './Layout';
+import Footer from './Footer';
 
 const About = () => {
   return (
@@ -12,6 +13,7 @@ const About = () => {
         <h2>Alix Galabert</h2>
         <p>I'm a young creator of handmade jewels.</p>
       </div>
+      <Footer />
     </Layout>
   );
 };

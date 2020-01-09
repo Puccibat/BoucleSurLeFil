@@ -4,6 +4,7 @@ import { getCart } from './cartHelpers';
 import Layout from './Layout';
 import Card from './Card';
 import Checkout from './Checkout';
+import Footer from './Footer';
 
 const Cart = cartUpdate => {
   const [items, setItems] = useState([]);
@@ -52,15 +53,14 @@ const Cart = cartUpdate => {
         description='BoucleSurLeFil'
         className='container-fluid'
       />
-      {/* <div className='row ml-1 mr-1'> */}
       <div>{items.length > 0 ? showItems(items) : noItemsMessage()}</div>
       <div className='container'>
         <h2 className='mb-4 mt-5 fontSnd'>Your cart summary</h2>
         <hr />
         <Checkout setRun={setRun} products={items} />
       </div>
+      <Footer />
     </div>
-    // </div>
   );
 };
 

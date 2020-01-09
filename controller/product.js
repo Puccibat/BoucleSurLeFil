@@ -132,7 +132,7 @@ exports.list = (req, res) => {
 };
 
 exports.productsByCategory = (req, res) => {
-  Product.find({ _id: { $ne: req.product }, category: req.product.category })
+  Product.find({ _id: { $ne: req.product }, category: req.params.categoryId })
     .populate('category', '_id name')
     .exec((err, products) => {
       if (err) {

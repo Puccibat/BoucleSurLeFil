@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '../core/Layout';
 import { isAuth } from '../auth/index';
+import Footer from '../core/Footer';
 
 const UserDashboard = () => {
   const {
@@ -67,6 +68,7 @@ const UserDashboard = () => {
           {purchaseHistory()}
         </div>
       </div>
+      <Footer />
     </Layout>
   );
 };

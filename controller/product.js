@@ -131,11 +131,8 @@ exports.list = (req, res) => {
     });
 };
 
-exports.listRelated = (req, res) => {
-  let limit = req.query.limit ? parseInt(req.query.limit) : 6;
-
+exports.productsByCategory = (req, res) => {
   Product.find({ _id: { $ne: req.product }, category: req.product.category })
-    .limit(limit)
     .populate('category', '_id name')
     .exec((err, products) => {
       if (err) {

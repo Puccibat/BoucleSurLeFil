@@ -58,9 +58,9 @@ const Product = (product, showAddToCartButton = true) => {
         description='BoucleSurLeFil'
         className='container-fluid'
       />
-      <div className='row justify-content-center'>
+      {/* <div className='row justify-content-center'>
         <Categories />
-      </div>
+      </div> */}
       <div className='container main mt-5'>
         <div className='product-page row'>
           <div className='col-2'></div>

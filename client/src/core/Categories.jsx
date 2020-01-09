@@ -1,35 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Categories = () => {
+const Categories = ({ categories, loadProductbyCategory }) => {
   return (
     <div>
       <div className='navbar navbar-expand-lg'>
         <ul className='navbar-nav heading' style={{ fontSize: '20px' }}>
-          <li className='nav-item active'>
-            <a className='nav-link menuC' href='#'>
-              Colliers
-            </a>
-          </li>
-          <li className='nav-item'>
-            <a className='nav-link menuC' href='#'>
-              Boucles d'oreilles
-            </a>
-          </li>
-          <li className='nav-item'>
-            <a className='nav-link menuC' href='#'>
-              Bracelets
-            </a>
-          </li>
-          <li className='nav-item'>
-            <a className='nav-link menuC' href='#'>
-              Sautoirs
-            </a>
-          </li>
-          <li className='nav-item'>
-            <a className='nav-link menuC' href='#'>
-              Bagues
-            </a>
-          </li>
+          {categories.map((category, index) => (
+            <li key={index} className='nav-item active' category={category}>
+              <a
+                className='nav-link menuC'
+                href='#'
+                value={category._id}
+                onClick={() => loadProductbyCategory(category._id)}
+              >
+                {category.name}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
       <hr />

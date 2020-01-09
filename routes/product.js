@@ -7,7 +7,7 @@ const {
   remove,
   update,
   list,
-  listRelated,
+  productsByCategory,
   listCategories,
   listBySearch,
   photo
@@ -56,14 +56,12 @@ router.get('/products', list);
 // @route   GET api/products/related/:productId
 // @desc    Get related products
 // @acces   Public
-router.get('/products/related/:productId', listRelated);
+router.get('/products/productsBycategory/:productId', productsByCategory);
 
 // @route   GET api/products/categories
 // @desc    Get products by categories
 // @acces   Public
 router.get('/products/categories', listCategories);
-
-router.post('/products/by/search', listBySearch);
 
 router.get('/product/photo/:productId', photo);
 

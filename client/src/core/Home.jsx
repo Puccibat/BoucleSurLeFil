@@ -1,13 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import Layout from './Layout';
-import { getProducts } from './apiCore';
+import { getProducts, getCategories, getProductsByCategory } from './apiCore';
 import Card from './Card';
-import Categories from './Categories';
+import CategoriesComponent from './Categories';
+import Footer from './Footer';
 
 const Home = () => {
   const [productsBySell, setPorductsBySell] = useState([]);
   const [productsByArrival, setPorductsByArrival] = useState([]);
+  const [productsByCategory, setPorductsByCategory] = useState([]);
   const [error, setError] = useState(false);
+  const [categories, setCategories] = useState([]);
+
+  const loadProductbyCategory = categoryId => {
+    getProductsByCategory(categoryId).then(data => {
+      if (data.error) {
+        setError(data.error);
+      } else {
+        setPorductsByCategory(data);
+      }
+    });
+  };
+
+  const loadCategories = () => {
+    getCategories().then(data => {
+      if (data.error) {
+        setError(data.error);
+      } else {
+        setCategories(data);
+      }
+    });
+  };
 
   const loadProductsBySell = () => {
     getProducts('sold').then(data => {
@@ -30,6 +53,8 @@ const Home = () => {
   };
 
   useEffect(() => {
+    loadCategories();
+    loadProductbyCategory();
     loadProductsByArrival();
     loadProductsBySell();
   }, []);
@@ -41,7 +66,10 @@ const Home = () => {
       className='container-fluid'
     >
       <div className='row justify-content-center'>
-        <Categories />
+        <CategoriesComponent
+          categories={categories}
+          loadProductbyCategory={loadProductbyCategory}
+        />
       </div>
 
       <h2 className='mb-4 titleHome'>New arrivals</h2>
@@ -57,6 +85,7 @@ const Home = () => {
           <Card key={index} product={product} />
         ))}
       </div>
+      <Footer />
     </Layout>
   );
 };

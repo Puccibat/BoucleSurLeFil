@@ -11,6 +11,7 @@ import AdminDashboard from './user/AdminDashboard';
 import AddCategories from './admin/AddCategories';
 import AddProduct from './admin/AddProduct';
 import Product from './core/Product';
+import Bijoux from './core/Bijoux';
 import Cart from './core/Cart';
 import Orders from './admin/Orders';
 import ManageProducts from './admin/ManageProducts';
@@ -21,6 +22,7 @@ const Routes = () => {
     <BrowserRouter>
       <Switch>
         <Route path='/' exact component={Home} />
+        <Route path='/bijoux' exact component={Bijoux} />
         <Route path='/product/:productId' exact component={Product} />
         <Route path='/about' exact component={About} />
         <Route path='/signup' exact component={Signup} />

@@ -3,40 +3,40 @@ import { Link, withRouter } from 'react-router-dom';
 import { signout, isAuth } from '../auth/index';
 import { itemTotal } from './cartHelpers';
 
-// const isActive = (history, path) => {
-//   if (history.location.pathname === path) {
-//     return { color: '#000000' };
-//   } else {
-//     return { color: '#ffffff' };
-//   }
-// };
-
 const Menu = ({ history }) => {
   return (
     <div className='container'>
-      <div className='row justify-content-center navbar navbar-expand-lg'>
-        <ul className='navbar-nav heading' style={{ fontSize: '25px' }}>
-          <li className='nav-item col-2'>
+      <div className=' navbar navbar-expand-lg'>
+        <ul
+          className='navbar-nav heading'
+          style={{ fontSize: '20px', margin: 'auto' }}
+        >
+          <li className='nav-item '>
             <Link className='nav-link  menu' to='/'>
-              Home
+              Accueil
             </Link>
           </li>
-          <li className='nav-item col-2'>
+          <li className='nav-item '>
+            <Link className='nav-link  menu' to='/bijoux'>
+              Bijoux
+            </Link>
+          </li>
+          <li className='nav-item '>
             <Link className='nav-link  menu' to='/about'>
-              About
+              A propos
             </Link>
           </li>
 
           {isAuth() && isAuth().user.role === 0 && (
-            <li className='nav-item col-3'>
+            <li className='nav-item '>
               <Link className='nav-link  menu' to='/user/dashboard'>
-                Dashboard
+                Mon profil
               </Link>
             </li>
           )}
 
           {isAuth() && isAuth().user.role === 1 && (
-            <li className='nav-item col-3'>
+            <li className='nav-item '>
               <Link className='nav-link menu' to='/admin/dashboard'>
                 Dashboard
               </Link>
@@ -45,21 +45,21 @@ const Menu = ({ history }) => {
 
           {!isAuth() && (
             <Fragment>
-              <li className='nav-item col-2'>
+              <li className='nav-item '>
                 <Link className='nav-link menu' to='/signin'>
-                  Signin
+                  Connexion
                 </Link>
               </li>
-              <li className='nav-item col-2'>
+              <li className='nav-item '>
                 <Link className='nav-link menu' to='/signup'>
-                  Signup
+                  Inscription
                 </Link>
               </li>
             </Fragment>
           )}
 
           {isAuth() && (
-            <li className='nav-item col-2'>
+            <li className='nav-item '>
               <a
                 className='nav-link menu'
                 href='#'
@@ -69,14 +69,14 @@ const Menu = ({ history }) => {
                   })
                 }
               >
-                Signout
+                Déconnexion
               </a>
             </li>
           )}
 
-          <li className='nav-item col-2'>
-            <Link className='nav-link menu ml-4' to='/cart'>
-              Cart
+          <li className='nav-item '>
+            <Link className='nav-link menu' to='/cart'>
+              Panier
               {itemTotal() > 0 ? (
                 <sup>
                   <small className='cart-badge' style={{ color: '#ffffff' }}>

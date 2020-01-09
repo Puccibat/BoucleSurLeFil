@@ -75,7 +75,7 @@ const Menu = ({ history }) => {
           )}
 
           <li className='nav-item col-2'>
-            <Link className='nav-link menu' to='/cart'>
+            <Link className='nav-link menu ml-4' to='/cart'>
               Cart
               {itemTotal() > 0 ? (
                 <sup>

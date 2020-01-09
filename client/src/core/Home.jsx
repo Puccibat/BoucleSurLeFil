@@ -14,31 +14,6 @@ const Home = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const loadProductbyCategory = categoryId => {
-    setLoading(true);
-    getProductsByCategory(categoryId).then(data => {
-      if (data.error) {
-        console.log(data.error);
-        setError(data.error);
-        setLoading(false);
-      } else {
-        console.log(data);
-        setPorductsByCategory(data);
-        setLoading(false);
-      }
-    });
-  };
-
-  const loadCategories = () => {
-    getCategories().then(data => {
-      if (data.error) {
-        setError(data.error);
-      } else {
-        setCategories(data);
-      }
-    });
-  };
-
   const loadProductsBySell = () => {
     getProducts('sold').then(data => {
       if (data.error) {
@@ -59,38 +34,7 @@ const Home = () => {
     });
   };
 
-  const renderProducts = () => {
-    if (productsByCategory.length === 0) {
-      return (
-        <Fragment>
-          <h2 className='mb-4 titleHome'>New arrivals</h2>
-          <div className='row'>
-            {productsByArrival.map((product, index) => (
-              <Card key={index} product={product} />
-            ))}
-          </div>
-
-          <h2 className='mb-4 mt-5 titleHome'>Best sellers</h2>
-          <div className='row'>
-            {productsBySell.map((product, index) => (
-              <Card key={index} product={product} />
-            ))}
-          </div>
-        </Fragment>
-      );
-    } else {
-      return (
-        <div className='row'>
-          {productsByCategory.map((product, index) => (
-            <Card key={index} product={product} />
-          ))}
-        </div>
-      );
-    }
-  };
   useEffect(() => {
-    loadCategories();
-    loadProductbyCategory();
     loadProductsByArrival();
     loadProductsBySell();
   }, []);
@@ -101,13 +45,19 @@ const Home = () => {
       description='BoucleSurLeFil'
       className='container-fluid'
     >
-      <div className='row justify-content-center'>
-        <CategoriesComponent
-          categories={categories}
-          loadProductbyCategory={loadProductbyCategory}
-        />
+      <h2 className='mb-4 titleHome'>New arrivals</h2>
+      <div className='row'>
+        {productsByArrival.map((product, index) => (
+          <Card key={index} product={product} />
+        ))}
       </div>
-      {loading ? <Spinner /> : renderProducts()}
+
+      <h2 className='mb-4 mt-5 titleHome'>Best sellers</h2>
+      <div className='row'>
+        {productsBySell.map((product, index) => (
+          <Card key={index} product={product} />
+        ))}
+      </div>
       <Footer />
     </Layout>
   );

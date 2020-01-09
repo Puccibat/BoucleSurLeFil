@@ -16,7 +16,6 @@ exports.orderById = (req, res, next, id) => {
 };
 
 exports.create = (req, res) => {
-  // console.log('CREATE ORDER: ', req.body);
   const order = new Order(req.body.order);
   order.save((error, data) => {
     if (error) {
@@ -29,8 +28,9 @@ exports.create = (req, res) => {
 };
 
 exports.listOrders = (req, res) => {
+  let order = req.query.order ? req.query.order : 'asc';
   Order.find()
-    .sort('-created')
+    .sort([[order]])
     .exec((error, orders) => {
       if (error) {
         return res.status(400).json({

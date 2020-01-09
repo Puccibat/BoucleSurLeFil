@@ -23,8 +23,8 @@ const OrderSchema = new mongoose.Schema(
     clientName: String,
     status: {
       type: String,
-      default: 'Not processed',
-      enum: ['Not processed', 'Processing', 'Shipped', 'Delivered', 'Cancelled'] // enum means string objects
+      default: 'Pas traitée',
+      enum: ['Pas traitée', 'En préparation', 'Envoyée', 'Annulée'] // enum means string objects
     },
     updated: Date
   },

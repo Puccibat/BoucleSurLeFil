@@ -41,7 +41,7 @@ const Product = (product, showAddToCartButton = true) => {
           onClick={addToCart}
           className='btn btn-outline-danger mt-2 mb-2'
         >
-          Add to card
+          Ajouter au panier
         </button>
       )
     );
@@ -67,7 +67,7 @@ const Product = (product, showAddToCartButton = true) => {
             <h1 className='title-dash'></h1>
             <h2>{productItem.price}€</h2>
             <div className='product-details'>{productItem.description}</div>
-            {product.quantity > 0 ? showAddToCart(showAddToCartButton) : ''}
+            {productItem.quantity > 0 ? showAddToCart(showAddToCartButton) : ''}
           </div>
           <div className='imageProduct col-4'>
             <ShowImage item={productItem} url='product' />

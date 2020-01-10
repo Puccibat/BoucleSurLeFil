@@ -7,13 +7,13 @@ const Footer = () => {
       <footer>
         <div className='container'>
           <hr />
-          <div className='row mt-5 mb-5 ml-5'>
-            <div className='col-sm-4'>
+          <div className='d-flex justify-content-around'>
+            <div>
               <Link to='/mentionsLegales'>Mentions légales</Link>
             </div>
-            <div className='col-sm-4'>
+            <div>
               <a
-                className='icon mr-3'
+                className='icon mr-2'
                 href='https://www.instagram.com/bouclesurlefil/'
                 target='blank'
               >
@@ -24,7 +24,7 @@ const Footer = () => {
                 ></i>
               </a>
               <a
-                className='icon ml-3'
+                className='icon'
                 href='https://www.pinterest.fr/BoucleSurLeFil/'
                 target='blank'
               >
@@ -35,13 +35,18 @@ const Footer = () => {
                 ></i>
               </a>
             </div>
-            <div className='col-sm-4'>
+            <div>
               <Link to='/conditionsGenerales'>
                 Conditions générales de ventes
               </Link>
             </div>
           </div>
-          <div className='mb-5'>Contact: contact@bouclesurlefil.com</div>
+
+          <div className='mb-5 mt-3 d-flex justify-content-around'>
+            <div>contact@bouclesurlefil.com</div>
+            <br />
+            <div>Site créé par Puccibat</div>
+          </div>
         </div>
       </footer>
     </div>

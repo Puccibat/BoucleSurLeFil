@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Layout from './Layout';
 import Categories from './Categories';
 import ShowImage from './ShowImage';
+import Footer from './Footer';
 import { read } from './apiCore';
 import { addItem } from './cartHelpers';
 
@@ -58,9 +59,6 @@ const Product = (product, showAddToCartButton = true) => {
         description='BoucleSurLeFil'
         className='container-fluid'
       />
-      {/* <div className='row justify-content-center'>
-        <Categories />
-      </div> */}
       <div className='container main mt-5'>
         <div className='product-page row'>
           <div className='col-2'></div>
@@ -69,7 +67,7 @@ const Product = (product, showAddToCartButton = true) => {
             <h1 className='title-dash'></h1>
             <h2>{productItem.price}€</h2>
             <div className='product-details'>{productItem.description}</div>
-            {showAddToCart(showAddToCartButton)}
+            {product.quantity > 0 ? showAddToCart(showAddToCartButton) : ''}
           </div>
           <div className='imageProduct col-4'>
             <ShowImage item={productItem} url='product' />
@@ -77,6 +75,7 @@ const Product = (product, showAddToCartButton = true) => {
           <div className='col-2'></div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

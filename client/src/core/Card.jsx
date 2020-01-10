@@ -110,7 +110,7 @@ const Card = ({
               Voir le produit
             </button>
           </Link>
-          {showAddToCart(showAddToCartButton)}
+          {product.quantity > 0 ? showAddToCart(showAddToCartButton) : ''}
           {showCartUpdateOptions(cartUpdate)}
           {showRemoveButton(showRemoveProductButton)}
         </div>

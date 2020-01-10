@@ -183,7 +183,7 @@ const UpdateProduct = ({ match }) => {
       className='alert alert-info'
       style={{ display: createdProduct ? '' : 'none' }}
     >
-      <h2>{`${createdProduct} is updated !`}</h2>
+      <h2>{`${createdProduct} est à jour !`}</h2>
     </div>
   );
 

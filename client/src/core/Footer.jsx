@@ -41,6 +41,7 @@ const Footer = () => {
               </Link>
             </div>
           </div>
+          <div className='mb-5'>Contact: contact@bouclesurlefil.com</div>
         </div>
       </footer>
     </div>

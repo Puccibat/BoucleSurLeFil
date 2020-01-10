@@ -3,52 +3,67 @@ import { Link } from 'react-router-dom';
 import { getCart } from './cartHelpers';
 import Layout from './Layout';
 import Card from './Card';
+import Checkout from './Checkout';
+import Footer from './Footer';
 
-const Cart = () => {
+const Cart = cartUpdate => {
   const [items, setItems] = useState([]);
+  const [run, setRun] = useState(false);
 
   useEffect(() => {
     setItems(getCart());
-  }, []);
+  }, [run]);
 
   const showItems = items => {
     return (
-      <div>
-        <h2>Your cart has {`${items.length}`} items</h2>
+      <div className='container'>
+        <h2 className='fontSnd'>Your cart has {`${items.length}`} items</h2>
         <hr />
-        {items.map((product, index) => (
-          <Card key={index} product={product} />
-        ))}
+        <div className='row'>
+          {items.map((product, index) => (
+            <Card
+              key={index}
+              product={product}
+              showAddToCartButton={false}
+              cartUpdate={true}
+              showRemoveProductButton={true}
+              setRun={setRun}
+              run={run}
+            />
+          ))}
+        </div>
       </div>
     );
   };
 
   const noItemsMessage = () => {
     return (
-      <div>
-        <h2>
-          Your cart is empty <br /> <Link to='/shop'>Continue shopping</Link>
+      <div className='container'>
+        <h2 className='fontSnd'>
+          Votre panier est vide <br />{' '}
+          <Link to='/' style={{ color: '#000000' }}>
+            Continuer mes achats
+          </Link>
         </h2>
-        ;
       </div>
     );
   };
 
   return (
-    <Layout
-      title='Shopping Cart'
-      description='Manage your cart items'
-      className='container-fluid'
-    >
-      <div className='row'>
-        <div className='col-6'>
-          {items.length > 0 ? showItems(items) : noItemsMessage()}
-        </div>
-        <div className='col-6'>
-          <p>Show checkout, shipping adress/total/update quantity</p>
-        </div>
+    <div>
+      <Layout
+        title='Shopping Cart'
+        description='BoucleSurLeFil'
+        className='container-fluid'
+      />
+      <div>{items.length > 0 ? showItems(items) : noItemsMessage()}</div>
+      <div className='container'>
+        <h2 className='mb-4 mt-5 fontSnd'>Votre panier</h2>
+        <hr />
+        <Checkout setRun={setRun} products={items} />
       </div>
-    </Layout>
+      <Footer />
+    </div>
   );
 };
 

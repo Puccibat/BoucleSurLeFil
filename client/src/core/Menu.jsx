@@ -3,120 +3,92 @@ import { Link, withRouter } from 'react-router-dom';
 import { signout, isAuth } from '../auth/index';
 import { itemTotal } from './cartHelpers';
 
-const isActive = (history, path) => {
-  if (history.location.pathname === path) {
-    return { color: '#000000' };
-  } else {
-    return { color: '#ffffff' };
-  }
-};
-
 const Menu = ({ history }) => {
   return (
-    <div>
-      <ul className='nav nav-tabs bg-danger'>
-        <li className='nav-item'>
-          <Link className='nav-link' style={isActive(history, '/')} to='/'>
-            Home
-          </Link>
-        </li>
-
-        <li className='nav-item'>
-          <Link
-            className='nav-link'
-            style={isActive(history, '/shop')}
-            to='/shop'
-          >
-            Shop
-          </Link>
-        </li>
-
-        <li className='nav-item'>
-          <Link
-            className='nav-link'
-            style={isActive(history, '/about')}
-            to='/about'
-          >
-            About
-          </Link>
-        </li>
-
-        {isAuth() && isAuth().user.role === 0 && (
-          <li className='nav-item'>
-            <Link
-              className='nav-link'
-              style={isActive(history, '/user/dashboard')}
-              to='/user/dashboard'
-            >
-              Dashboard
+    <div className='container'>
+      <div className=' navbar navbar-expand-lg'>
+        <ul
+          className='navbar-nav heading'
+          style={{ fontSize: '20px', margin: 'auto' }}
+        >
+          <li className='nav-item '>
+            <Link className='nav-link  menu' to='/'>
+              Accueil
             </Link>
           </li>
-        )}
-
-        {isAuth() && isAuth().user.role === 1 && (
-          <li className='nav-item'>
-            <Link
-              className='nav-link'
-              style={isActive(history, '/admin/dashboard')}
-              to='/admin/dashboard'
-            >
-              Dashboard
+          <li className='nav-item '>
+            <Link className='nav-link  menu' to='/bijoux'>
+              Bijoux
             </Link>
           </li>
-        )}
-
-        {!isAuth() && (
-          <Fragment>
-            <li className='nav-item'>
-              <Link
-                className='nav-link'
-                style={isActive(history, '/signin')}
-                to='/signin'
-              >
-                Signin
-              </Link>
-            </li>
-            <li className='nav-item'>
-              <Link
-                className='nav-link'
-                style={isActive(history, '/signup')}
-                to='/signup'
-              >
-                Signup
-              </Link>
-            </li>
-          </Fragment>
-        )}
-
-        {isAuth() && (
-          <li className='nav-item'>
-            <span
-              className='nav-link'
-              style={{ cursor: 'pointer', color: '#ffffff' }}
-              onClick={() =>
-                signout(() => {
-                  history.push('/');
-                })
-              }
-            >
-              Signout
-            </span>
+          <li className='nav-item '>
+            <Link className='nav-link  menu' to='/about'>
+              A propos
+            </Link>
           </li>
-        )}
 
-        <li className='nav-item'>
-          <Link
-            className='nav-link'
-            style={isActive(history, '/cart')}
-            to='/cart'
-          >
-            Cart{''}
-            <sup>
-              <small className='cart-badge'>{itemTotal()}</small>
-            </sup>
-          </Link>
-        </li>
-      </ul>
+          {isAuth() && isAuth().user.role === 0 && (
+            <li className='nav-item '>
+              <Link className='nav-link  menu' to='/user/dashboard'>
+                Mon profil
+              </Link>
+            </li>
+          )}
+
+          {isAuth() && isAuth().user.role === 1 && (
+            <li className='nav-item '>
+              <Link className='nav-link menu' to='/admin/dashboard'>
+                Dashboard
+              </Link>
+            </li>
+          )}
+
+          {!isAuth() && (
+            <Fragment>
+              <li className='nav-item '>
+                <Link className='nav-link menu' to='/signin'>
+                  Connexion
+                </Link>
+              </li>
+              <li className='nav-item '>
+                <Link className='nav-link menu' to='/signup'>
+                  Inscription
+                </Link>
+              </li>
+            </Fragment>
+          )}
+
+          {isAuth() && (
+            <li className='nav-item '>
+              <a
+                className='nav-link menu'
+                href='#'
+                onClick={() =>
+                  signout(() => {
+                    history.push('/');
+                  })
+                }
+              >
+                Déconnexion
+              </a>
+            </li>
+          )}
+
+          <li className='nav-item '>
+            <Link className='nav-link menu' to='/cart'>
+              Panier
+              {itemTotal() > 0 ? (
+                <sup>
+                  <small className='cart-badge' style={{ color: '#ffffff' }}>
+                    {itemTotal()}
+                  </small>
+                </sup>
+              ) : null}
+            </Link>
+          </li>
+        </ul>
+      </div>
+      <hr />
     </div>
   );
 };

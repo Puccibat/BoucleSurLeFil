@@ -45,26 +45,26 @@ const AddCategories = () => {
           required
         />
       </div>
-      <button className='btn btn-outline-primary'>Create Category</button>
+      <button className='btn btn-outline-primary'>Créer une catégorie</button>
     </form>
   );
 
   const showSuccess = () => {
     if (success) {
-      return <h3 className='text-success'>{name} is created</h3>;
+      return <h3 className='text-success'>{name} a été créer</h3>;
     }
   };
 
   const showError = () => {
     if (error) {
-      return <h3 className='text-danger'>{name} already exist</h3>;
+      return <h3 className='text-danger'>{name} existe déjà</h3>;
     }
   };
 
   const goBack = () => (
     <div className='mt-5'>
       <Link to='/admin/dashboard' className='text-warning'>
-        Back to Dashboard
+        Retour au Dashboard
       </Link>
     </div>
   );

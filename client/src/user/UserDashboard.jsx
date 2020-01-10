@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '../core/Layout';
 import { isAuth } from '../auth/index';
+import Footer from '../core/Footer';
 
 const UserDashboard = () => {
   const {
@@ -12,15 +13,15 @@ const UserDashboard = () => {
     return (
       <div className='card'>
         <h4 className='card-header'></h4>
-        <ul className='list-group'>
+        <ul className='list-group fontSnd'>
           <li className='list-group-item'>
             <Link className='nav-link' to='/cart'>
-              My cart
+              Mon panier
             </Link>
           </li>
           <li className='list-group-item'>
             <Link className='nav-link' to='/profile/update'>
-              Update profile
+              Modifier mon profil
             </Link>
           </li>
         </ul>
@@ -31,8 +32,8 @@ const UserDashboard = () => {
   const userInfo = () => {
     return (
       <div className='card mb-5'>
-        <h3 className='card-header'>User information</h3>
-        <ul className='list-group'>
+        <h3 className='card-header'>Mes informations</h3>
+        <ul className='list-group fontSnd'>
           <li className='list-group-item'>{name}</li>
           <li className='list-group-item'>{email}</li>
           <li className='list-group-item'>
@@ -46,9 +47,9 @@ const UserDashboard = () => {
   const purchaseHistory = () => {
     return (
       <div className='card mb-5'>
-        <h3 className='card-header'>Purchase history</h3>
+        <h3 className='card-header'>Historique de commandes</h3>
         <ul className='list-group'>
-          <li className='list-group-item'>history</li>
+          <li className='list-group-item'>Mes commandes</li>
         </ul>
       </div>
     );
@@ -67,6 +68,7 @@ const UserDashboard = () => {
           {purchaseHistory()}
         </div>
       </div>
+      <Footer />
     </Layout>
   );
 };

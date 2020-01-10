@@ -2,7 +2,6 @@
 * border radius
 **/
 .btn,
-.jumbotron,
 .nav :hover {
   border-radius: 0px;
 }
@@ -19,59 +18,73 @@
 **/
 .cart-badge,
 .cart-badge:hover {
+  margin-left: 5px;
   border-radius: 50%;
   padding: 2px;
   font-size: 12px;
   background: #951616;
 }
 
-/**
-* jumbotron animation
-**/
-
-.jumbotron {
-  width: 30wh;
-  height: 30vh;
-  color: #fff;
-  background: linear-gradient(-45deg, #ffffff, #951616, #f74444, #91070e);
-  background-size: 400% 400%;
-  -webkit-animation: Gradient 15s ease infinite;
-  -moz-animation: Gradient 15s ease infinite;
-  animation: Gradient 15s ease infinite;
+.menu:hover,
+.menu {
+  color: #951616;
+  font-size: 32px;
 }
 
-@-webkit-keyframes Gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+.nav-item {
+  padding: 10px;
 }
 
-@-moz-keyframes Gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+.menuC {
+  color: #000000;
+  font-size: 25px;
+  cursor: pointer;
 }
 
-@keyframes Gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+.product-page-heading,
+.title,
+.btn,
+.card-header,
+.heading {
+  font-family: 'Rochester', cursive;
+}
+.product-details,
+.card-body,
+.fontSnd {
+  font-family: 'Quicksand', sans-serif;
+}
+
+.title {
+  font-size: 64px;
+}
+
+.titleHome {
+  font-size: 60px;
+  font-family: 'Rochester', cursive;
+}
+
+.btn {
+  font-size: 20px;
+}
+
+.fa.fa-instagram {
+  color: transparent;
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+  background: -webkit-radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
 }

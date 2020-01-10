@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import ShowImage from './ShowImage';
-import { addItem } from './cartHelpers';
+import { addItem, updateItem, removeItem } from './cartHelpers';
 
-const Card = ({ product }) => {
+const Card = ({
+  product,
+  showAddToCartButton = true,
+  cartUpdate = false,
+  showRemoveProductButton = false,
+  setRun = f => f,
+  run = undefined
+}) => {
   const [redirect, setRedirect] = useState(false);
+  const [count, setCount] = useState(product.count);
 
   const addToCart = () => {
     addItem(product, () => {
@@ -18,39 +26,93 @@ const Card = ({ product }) => {
     }
   };
 
-  const showAddToCartButton = () => {
+  const showAddToCart = showAddToCartButton => {
     return (
-      <button onClick={addToCart} className='btn btn-outline-warning mt-2 mb-2'>
-        Add to card
-      </button>
+      showAddToCartButton && (
+        <button
+          onClick={addToCart}
+          className='btn btn-outline-danger mt-2 mb-2'
+        >
+          Ajouter au panier
+        </button>
+      )
+    );
+  };
+
+  const showRemoveButton = showRemoveProductButton => {
+    return (
+      showRemoveProductButton && (
+        <button
+          onClick={() => {
+            removeItem(product._id);
+            setRun(!run);
+          }}
+          className='btn btn-outline-danger mt-2 mb-2'
+        >
+          Retirer produit
+        </button>
+      )
+    );
+  };
+
+  const handleChange = productId => event => {
+    setRun(!run);
+    setCount(event.target.value < 1 ? 1 : event.target.value);
+    if (event.target.value >= 1) {
+      updateItem(productId, event.target.value);
+    }
+  };
+
+  const showCartUpdateOptions = cartUpdate => {
+    return (
+      cartUpdate && (
+        <div>
+          <div className='input-group mb-3'>
+            <div className='input-group-prepend'>
+              <span className='input-group-text'>Quantité</span>
+            </div>
+            <input
+              type='number'
+              className='form-control'
+              value={count}
+              onChange={handleChange(product._id)}
+            />
+          </div>
+        </div>
+      )
     );
   };
 
   const showStock = quantity => {
     return quantity > 0 ? (
-      <span className='badge badge-primary badge-pill'>In stock</span>
+      <span className='badge badge-primary badge-pill'>Disponible</span>
     ) : (
-      <span className='badge badge-danger badge-pill'>Out of Stock</span>
+      <span className='badge badge-danger badge-pill'>Rupture</span>
     );
   };
 
   return (
-    <div className='col-4 mb-3'>
+    <div className='col-sm-3 mb-3'>
       <div className='card'>
-        <div className='card-header'>{product.name}</div>
+        <div className='card-header' style={{ fontSize: '25px' }}>
+          {product.name}
+        </div>
         <div className='card-body'>
           {shouldRedirect(redirect)}
           <ShowImage item={product} url='product' />
-          <p>{product.description.substring(0, 30)}</p>
-          <p>€{product.price}</p>
+          <p className='heading' style={{ fontSize: '25px', color: '#951616' }}>
+            {product.price}€
+          </p>
           {showStock(product.quantity)}
           <br />
           <Link to={`/product/${product._id}`}>
             <button className='btn btn-outline-primary mt-2 mb-2 mr-2'>
-              View Product
+              Voir le produit
             </button>
           </Link>
-          {showAddToCartButton()}
+          {product.quantity > 0 ? showAddToCart(showAddToCartButton) : ''}
+          {showCartUpdateOptions(cartUpdate)}
+          {showRemoveButton(showRemoveProductButton)}
         </div>
       </div>
     </div>

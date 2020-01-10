@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../core/Layout';
 import { isAuth } from '../auth/index';
-import { createProduct, getCategories } from '../admin/ApiAdmin';
+import { getProduct, getCategories, updateProduct } from '../admin/ApiAdmin';
+import { Redirect } from 'react-router-dom';
 
-const AddProduct = () => {
+const UpdateProduct = ({ match }) => {
   const [values, setValues] = useState({
     name: '',
     description: '',
@@ -32,19 +33,38 @@ const AddProduct = () => {
     formData
   } = values;
 
+  const init = productId => {
+    getProduct(productId).then(data => {
+      if (data.error) {
+        setValues({ ...values, error: data.error });
+      } else {
+        setValues({
+          ...values,
+          name: data.name,
+          description: data.description,
+          price: data.price,
+          category: data.category._id,
+          quantity: data.quantity,
+          formData: new FormData()
+        });
+        initCategories();
+      }
+    });
+  };
+
   // load categories and set form data
-  const init = () => {
+  const initCategories = () => {
     getCategories().then(data => {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
-        setValues({ ...values, categories: data, formData: new FormData() });
+        setValues({ categories: data, formData: new FormData() });
       }
     });
   };
 
   useEffect(() => {
-    init();
+    init(match.params.productId);
   }, []);
 
   const handleChange = name => event => {
@@ -57,27 +77,31 @@ const AddProduct = () => {
     event.preventDefault();
     setValues({ ...values, error: '', loading: true });
 
-    createProduct(user._id, token, formData).then(data => {
-      if (data.error) {
-        setValues({ ...values, error: data.error });
-      } else {
-        setValues({
-          ...values,
-          name: '',
-          description: '',
-          photo: '',
-          price: '',
-          quantity: '',
-          loading: false,
-          createdProduct: data.name
-        });
+    updateProduct(match.params.productId, user._id, token, formData).then(
+      data => {
+        if (data.error) {
+          setValues({ ...values, error: data.error });
+        } else {
+          setValues({
+            ...values,
+            name: '',
+            description: '',
+            photo: '',
+            price: '',
+            quantity: '',
+            loading: false,
+            error: false,
+            redirectToProfile: true,
+            createdProduct: data.name
+          });
+        }
       }
-    });
+    );
   };
 
   const newPostForm = () => (
     <form className='mb-3' onSubmit={clickSubmit}>
-      <h4>Ajouter Photo</h4>
+      <h4>Post Photo</h4>
       <div className='form-group'>
         <label className='btn btn-secondary'>
           <input
@@ -90,7 +114,7 @@ const AddProduct = () => {
       </div>
 
       <div className='form-group'>
-        <label className='text-muted'>Nom</label>
+        <label className='text-muted'>Name</label>
         <input
           onChange={handleChange('name')}
           type='text'
@@ -109,7 +133,7 @@ const AddProduct = () => {
       </div>
 
       <div className='form-group'>
-        <label className='text-muted'>Prix</label>
+        <label className='text-muted'>Price</label>
         <input
           onChange={handleChange('price')}
           type='number'
@@ -119,9 +143,9 @@ const AddProduct = () => {
       </div>
 
       <div className='form-group'>
-        <label className='text-muted'>Categorie</label>
+        <label className='text-muted'>Category</label>
         <select onChange={handleChange('category')} className='form-control'>
-          <option>Sélectionnez une catégorie</option>
+          <option>Please select a category</option>
           {categories &&
             categories.map((category, index) => (
               <option key={index} value={category._id}>
@@ -132,7 +156,7 @@ const AddProduct = () => {
       </div>
 
       <div className='form-group'>
-        <label className='text-muted'>Quantité</label>
+        <label className='text-muted'>Quantity</label>
         <input
           onChange={handleChange('quantity')}
           type='number'
@@ -141,7 +165,7 @@ const AddProduct = () => {
         />
       </div>
 
-      <button className='btn btn-outline-primary'>Créer Produit</button>
+      <button className='btn btn-outline-primary'>Update Product</button>
     </form>
   );
 
@@ -159,9 +183,17 @@ const AddProduct = () => {
       className='alert alert-info'
       style={{ display: createdProduct ? '' : 'none' }}
     >
-      <h2>{`${createdProduct} est créé !`}</h2>
+      <h2>{`${createdProduct} est à jour !`}</h2>
     </div>
   );
+
+  const redirectUser = () => {
+    if (redirectToProfile) {
+      if (!error) {
+        return <Redirect to='/' />;
+      }
+    }
+  };
 
   const showLoading = () =>
     loading && (
@@ -173,7 +205,7 @@ const AddProduct = () => {
   return (
     <Layout
       title='Add a new product'
-      description={`Hey ${user.name} ! Ajoute un nouveau produit`}
+      description={`Hey ${user.name} ! Please add a new product`}
       className='container'
     >
       <div className='row'>
@@ -182,10 +214,11 @@ const AddProduct = () => {
           {showError()}
           {showSuccess()}
           {newPostForm()}
+          {redirectUser()}
         </div>
       </div>
     </Layout>
   );
 };
 
-export default AddProduct;
+export default UpdateProduct;

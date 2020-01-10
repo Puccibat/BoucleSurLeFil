@@ -48,7 +48,7 @@ const Signin = () => {
         />
       </div>
       <div className='form-group'>
-        <label className='text-muted'>Password</label>
+        <label className='text-muted'>Mot de passe</label>
         <input
           type='password'
           onChange={handleChange('password')}
@@ -57,7 +57,7 @@ const Signin = () => {
         />
       </div>
       <button onClick={clickSubmit} className='btn btn-primary'>
-        Submit
+        Valider
       </button>
     </form>
   );

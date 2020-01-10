@@ -92,7 +92,7 @@ const Card = ({
   };
 
   return (
-    <div className='col-sm-3 mb-3'>
+    <div className='col-sm-3 mb-3 card-group'>
       <div className='card'>
         <div className='card-header' style={{ fontSize: '25px' }}>
           {product.name}
@@ -103,8 +103,10 @@ const Card = ({
           <p className='heading' style={{ fontSize: '25px', color: '#951616' }}>
             {product.price}€
           </p>
-          {showStock(product.quantity)}
+          <span>{showStock(product.quantity)}</span>
           <br />
+        </div>
+        <div className='card-footer'>
           <Link to={`/product/${product._id}`}>
             <button className='btn btn-outline-primary mt-2 mb-2 mr-2'>
               Voir le produit

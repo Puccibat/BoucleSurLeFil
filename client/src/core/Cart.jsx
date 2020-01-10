@@ -17,7 +17,7 @@ const Cart = cartUpdate => {
   const showItems = items => {
     return (
       <div className='container'>
-        <h2 className='fontSnd'>Your cart has {`${items.length}`} items</h2>
+        <h2 className='fontSnd'>Vous avez {`${items.length}`} produit(s)</h2>
         <hr />
         <div className='row'>
           {items.map((product, index) => (

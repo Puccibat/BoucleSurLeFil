@@ -28,9 +28,8 @@ exports.create = (req, res) => {
 };
 
 exports.listOrders = (req, res) => {
-  let order = req.query.order ? req.query.order : 'asc';
   Order.find()
-    .sort([[order]])
+    .sort([['orderDate', 'desc']])
     .exec((error, orders) => {
       if (error) {
         return res.status(400).json({

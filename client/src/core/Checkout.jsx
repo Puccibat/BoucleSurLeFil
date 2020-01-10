@@ -69,7 +69,8 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
               transaction_id: response.transaction.id,
               amount: response.transaction.amount,
               address: deliveryAddress,
-              clientName: deliveryName
+              clientName: deliveryName,
+              orderDate: Date.now()
             };
 
             createOrder(data, createOrderData);
@@ -144,7 +145,7 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
       className='alert alert-info'
       style={{ display: success ? '' : 'none' }}
     >
-      Thank you for your purchase !
+      Merci pour votre achat !
     </div>
   );
 

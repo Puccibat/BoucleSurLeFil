@@ -21,6 +21,7 @@ const OrderSchema = new mongoose.Schema(
     amount: { type: Number },
     address: String,
     clientName: String,
+    orderDate: Date,
     status: {
       type: String,
       default: 'Pas traitée',

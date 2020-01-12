@@ -11,11 +11,9 @@ const uniqueMessage = error => {
       error.message.lastIndexOf('_1')
     );
     output =
-      fieldName.charAt(0).toUpperCase() +
-      fieldName.slice(1) +
-      ' already exists';
+      fieldName.charAt(0).toUpperCase() + fieldName.slice(1) + ' Existe déjà';
   } catch (ex) {
-    output = 'Unique field already exists';
+    output = 'Ce champ unique existe déjà';
   }
 
   return output;
@@ -34,7 +32,7 @@ exports.errorHandler = error => {
         message = uniqueMessage(error);
         break;
       default:
-        message = 'Something went wrong';
+        message = 'Quelque chose ne va pas';
     }
   } else {
     for (let errorName in error.errorors) {

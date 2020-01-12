@@ -10,7 +10,7 @@ exports.productById = (req, res, next, id) => {
     .exec((err, product) => {
       if (err || !product) {
         return res.status(400).json({
-          error: 'Product not found'
+          error: 'Produit pas trouvé'
         });
       }
       req.product = product;
@@ -29,7 +29,7 @@ exports.create = (req, res) => {
   form.parse(req, (err, fields, files) => {
     if (err) {
       return res.status(400).json({
-        error: 'Image could not be uploaded'
+        error: `L'image n'a pas pu être chargée`
       });
     }
     // Vérification des champs
@@ -37,7 +37,7 @@ exports.create = (req, res) => {
 
     if (!name || !description || !price || !category || !quantity) {
       return res.status(400).json({
-        error: 'All fields are required'
+        error: 'Tous les champs sont requis'
       });
     }
 
@@ -46,7 +46,7 @@ exports.create = (req, res) => {
     if (files.photo) {
       if (files.photo.size > 5000000) {
         return res.status(400).json({
-          error: 'Image should be less than 5Mb'
+          error: `L'image doit faire moins de 5Mo`
         });
       }
       product.photo.data = fs.readFileSync(files.photo.path);
@@ -73,7 +73,7 @@ exports.remove = (req, res) => {
       });
     }
     res.json({
-      message: 'Product deleted successfully'
+      message: 'Produit supprimé avec succès'
     });
   });
 };
@@ -84,7 +84,7 @@ exports.update = (req, res) => {
   form.parse(req, (err, fields, files) => {
     if (err) {
       return res.status(400).json({
-        error: 'Image could not be uploaded'
+        error: `L'image n'a pas pu être chargée`
       });
     }
 
@@ -93,7 +93,7 @@ exports.update = (req, res) => {
     if (files.photo) {
       if (files.photo.size > 5000000) {
         return res.status(400).json({
-          error: 'Image should be less than 1Mb'
+          error: `L'image doit faire moins de 5Mo`
         });
       }
       product.photo.data = fs.readFileSync(files.photo.path);
@@ -124,7 +124,7 @@ exports.list = (req, res) => {
     .exec((err, products) => {
       if (err) {
         return res.status(400).json({
-          error: 'Products not found'
+          error: 'Produit pas trouvé'
         });
       }
       res.json(products);
@@ -137,7 +137,7 @@ exports.productsByCategory = (req, res) => {
     .exec((err, products) => {
       if (err) {
         return res.status(400).json({
-          error: 'Products not found'
+          error: 'Produit pas trouvé'
         });
       }
       res.json(products);
@@ -148,55 +148,11 @@ exports.listCategories = (req, res) => {
   Product.distinct('category', {}, (err, categories) => {
     if (err) {
       return res.status(400).json({
-        error: 'Categories not found'
+        error: 'Catégorie pas trouvé'
       });
     }
     res.json(categories);
   });
-};
-
-exports.listBySearch = (req, res) => {
-  let order = req.body.order ? req.body.order : 'desc';
-  let sortBy = req.body.sortBy ? req.body.sortBy : '_id';
-  let limit = req.body.limit ? parseInt(req.body.limit) : 100;
-  let skip = parseInt(req.body.skip);
-  let findArgs = {};
-
-  // console.log(order, sortBy, limit, skip, req.body.filters);
-  // console.log("findArgs", findArgs);
-
-  for (let key in req.body.filters) {
-    if (req.body.filters[key].length > 0) {
-      if (key === 'price') {
-        // gte -  greater than price [0-10]
-        // lte - less than
-        findArgs[key] = {
-          $gte: req.body.filters[key][0],
-          $lte: req.body.filters[key][1]
-        };
-      } else {
-        findArgs[key] = req.body.filters[key];
-      }
-    }
-  }
-
-  Product.find(findArgs)
-    .select('-photo')
-    .populate('category')
-    .sort([[sortBy, order]])
-    .skip(skip)
-    .limit(limit)
-    .exec((err, data) => {
-      if (err) {
-        return res.status(400).json({
-          error: 'Products not found'
-        });
-      }
-      res.json({
-        size: data.length,
-        data
-      });
-    });
 };
 
 exports.photo = (req, res, next) => {
@@ -220,7 +176,7 @@ exports.decreaseQuantity = (req, res, next) => {
   Product.bulkWrite(bulkOps, {}, (error, products) => {
     if (error) {
       return res.status(400).json({
-        error: 'Could not update product'
+        error: 'Impossibilité de mettre le produit à jour'
       });
     }
     next();

@@ -22,14 +22,14 @@ exports.signin = (req, res) => {
   User.findOne({ email }, (err, user) => {
     if (err || !user) {
       return res.status(400).json({
-        error: 'User with that email does not exist. please signup'
+        error: `Il n'y a pas d'utilisateur avec cet email. Merci de vous inscrire`
       });
     }
     // if user is found make sure that the email and password match
     // create authenticate method in user model
     if (!user.authenticate(password)) {
       return res.status(401).json({
-        error: `Email and password don't match`
+        error: 'Email et mot de passe ne correspondent pas'
       });
     }
     // generate a signed token with user id and secret
@@ -44,7 +44,7 @@ exports.signin = (req, res) => {
 
 exports.signout = (req, res) => {
   res.clearCookie('t');
-  res.json({ message: 'Sign Out success' });
+  res.json({ message: 'Déconnexion avec succès' });
 };
 
 exports.requireSignin = expressJwt({
@@ -56,7 +56,7 @@ exports.isAuth = (req, res, next) => {
   let user = req.profile && req.auth && req.profile._id == req.auth._id;
   if (!user) {
     return res.status(403).json({
-      error: 'Access denied'
+      error: 'Accès refusé'
     });
   }
   next();
@@ -65,7 +65,7 @@ exports.isAuth = (req, res, next) => {
 exports.isAdmin = (req, res, next) => {
   if (req.profile.role === 0) {
     return res.status(403).json({
-      error: 'You are not allowed to go there!'
+      error: `Vous n'êtes pas autorisé à aller ici !`
     });
   }
   next();

@@ -9,7 +9,6 @@ const {
   list,
   productsByCategory,
   listCategories,
-  listBySearch,
   photo
 } = require('../controller/product');
 const { userSignupValidator } = require('../validator/index');

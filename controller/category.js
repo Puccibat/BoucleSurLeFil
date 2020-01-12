@@ -5,7 +5,7 @@ exports.categoryById = (req, res, next, id) => {
   Category.findById(id).exec((err, category) => {
     if (err || !category) {
       return res.status(400).json({
-        err: 'Category does not exist'
+        err: `Cette catégorie n'existe pas`
       });
     }
     req.category = category;
@@ -53,7 +53,7 @@ exports.remove = (req, res) => {
       });
     }
     res.json({
-      message: 'Category deleted'
+      message: 'Categorie supprimée'
     });
   });
 };

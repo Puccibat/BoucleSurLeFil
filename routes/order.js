@@ -11,10 +11,19 @@ const { requireSignin, isAuth, isAdmin } = require('../controller/auth');
 const { userById } = require('../controller/user');
 const { decreaseQuantity } = require('../controller/product');
 
+// @route   POST api/order/create
+// @desc    Create an order
+// @acces   Public
 router.post('/order/create', decreaseQuantity, create);
 
+// @route   GET api/order/list/:userId
+// @desc    List all orders
+// @acces   Admin
 router.get('/order/list/:userId', requireSignin, isAuth, isAdmin, listOrders);
 
+// @route   GET api/order/create
+// @desc    Get order status
+// @acces   Admin
 router.get(
   '/order/status-values/:userId',
   requireSignin,
@@ -23,6 +32,9 @@ router.get(
   getStatusValues
 );
 
+// @route   PUT api/order/create
+// @desc    Update order status
+// @acces   Admin
 router.put(
   '/order/:orderId/status/:userId',
   requireSignin,

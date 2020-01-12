@@ -63,6 +63,9 @@ router.get('/products/productsBycategory/:categoryId', productsByCategory);
 // @acces   Public
 router.get('/products/categories', listCategories);
 
+// @route   GET api//product/photo/:productId
+// @desc    Get photo by product ID
+// @acces   Public
 router.get('/product/photo/:productId', photo);
 
 router.param('userId', userById);

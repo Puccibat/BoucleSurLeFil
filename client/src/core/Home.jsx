@@ -12,7 +12,6 @@ const Home = () => {
   const [productsByCategory, setPorductsByCategory] = useState([]);
   const [error, setError] = useState(false);
   const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   const loadProductsBySell = () => {
     getProducts('sold', 8).then(data => {

@@ -1,10 +1,8 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from './Layout';
-import { getProducts, getCategories, getProductsByCategory } from './apiCore';
+import { getProducts } from './apiCore';
 import Card from './Card';
-import CategoriesComponent from './Categories';
 import Footer from './Footer';
-import Spinner from './Spinner';
 
 const Home = () => {
   const [productsBySell, setPorductsBySell] = useState([]);

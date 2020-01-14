@@ -40,11 +40,7 @@ const Home = () => {
   }, []);
 
   return (
-    <Layout
-      title='Home Page'
-      description='BoucleSurLeFil'
-      className='container-fluid'
-    >
+    <Layout className='container-fluid'>
       <h2 className='mb-4 titleHome'>Nouveautés</h2>
       <div className='row'>
         {productsByArrival.map((product, index) => (

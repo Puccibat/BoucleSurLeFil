@@ -34,11 +34,7 @@ const ManageProducts = () => {
   }, []);
 
   return (
-    <Layout
-      title='Manage Products'
-      description='Hey ! Please add a new product'
-      className='container'
-    >
+    <Layout className='container'>
       <div className='row'>
         <div className='col-12'>
           <h2 className='text-center'>

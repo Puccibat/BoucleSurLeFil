@@ -4,11 +4,7 @@ import Footer from './Footer';
 
 const Cgv = () => {
   return (
-    <Layout
-      title='About'
-      description='BoucleSurLeFil'
-      className='container-fluid'
-    >
+    <Layout className='container-fluid'>
       <div className='container text-center fontSnd'>
         <h2>Conditions générales de ventes</h2>
         <p>

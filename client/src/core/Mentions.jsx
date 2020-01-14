@@ -4,11 +4,7 @@ import Footer from './Footer';
 
 const Mentions = () => {
   return (
-    <Layout
-      title='About'
-      description='BoucleSurLeFil'
-      className='container-fluid'
-    >
+    <Layout className='container-fluid'>
       <div className='container text-center fontSnd'>
         <h2>Mentions légales</h2>
         <p>

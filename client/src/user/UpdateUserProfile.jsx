@@ -5,7 +5,7 @@ import EnConstruction from './enconstruction.png';
 
 const UpdateUserProfile = () => {
   return (
-    <Layout title='Dashboard' className='container'>
+    <Layout className='container'>
       <div>
         <img
           style={{ maxHeight: '100%', maxWidth: '100%' }}

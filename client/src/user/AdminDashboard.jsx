@@ -55,11 +55,7 @@ const AdminDashboard = () => {
   };
 
   return (
-    <Layout
-      title='Dashboard'
-      description={`Hey ${name} !`}
-      className='container'
-    >
+    <Layout className='container'>
       <div className='row'>
         <div className='col-sm-3 mb-5'>{adminLinks()}</div>
         <div className='col-sm-9'>{adminInfo()}</div>

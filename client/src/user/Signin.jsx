@@ -92,11 +92,7 @@ const Signin = () => {
   };
 
   return (
-    <Layout
-      title='Signin'
-      description='BoucleSurLeFil'
-      className='container col-md-8 offset-md-2'
-    >
+    <Layout className='container col-md-8 offset-md-2'>
       {showLoading()}
       {showError()}
       {signinForm()}

@@ -56,11 +56,7 @@ const UserDashboard = () => {
   };
 
   return (
-    <Layout
-      title='Dashboard'
-      description={`Hey ${name} !`}
-      className='container'
-    >
+    <Layout className='container'>
       <div className='row'>
         <div className='col-sm-3'>{userLinks()}</div>
         <div className='col-sm-9'>

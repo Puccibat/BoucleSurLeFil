@@ -4,11 +4,7 @@ import Footer from './Footer';
 
 const About = () => {
   return (
-    <Layout
-      title='About'
-      description='BoucleSurLeFil'
-      className='container-fluid'
-    >
+    <Layout className='container-fluid'>
       <div className='container text-center fontSnd'>
         <h2>Alix</h2>
         <p>

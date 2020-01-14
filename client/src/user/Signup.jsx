@@ -92,11 +92,7 @@ const Signup = () => {
   );
 
   return (
-    <Layout
-      title='Signup Page'
-      description='BoucleSurLeFil'
-      className='container col-md-8 offset-md-2'
-    >
+    <Layout className='container col-md-8 offset-md-2'>
       {showSuccess()}
       {showError()}
       {signupForm()}

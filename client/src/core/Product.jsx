@@ -54,11 +54,7 @@ const Product = (product, showAddToCartButton = true) => {
 
   return (
     <div>
-      <Layout
-        title='Product Page'
-        description='BoucleSurLeFil'
-        className='container-fluid'
-      />
+      <Layout className='container-fluid' />
       <div className='container main mt-5'>
         <div className='product-page row'>
           <div className='col-2'></div>

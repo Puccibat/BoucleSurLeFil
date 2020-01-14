@@ -77,11 +77,7 @@ const Home = () => {
   }, []);
 
   return (
-    <Layout
-      title='Home Page'
-      description='BoucleSurLeFil'
-      className='container-fluid'
-    >
+    <Layout className='container-fluid'>
       <div className='row justify-content-center'>
         <CategoriesComponent
           categories={categories}

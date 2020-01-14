@@ -89,11 +89,7 @@ const Orders = () => {
   );
 
   return (
-    <Layout
-      title='Orders'
-      description={`Hey !, you can manage your orders here !`}
-      className='container'
-    >
+    <Layout className='container'>
       <div className='row'>
         <div className='col-md-8 offset-md-2'>
           {showOrdersLength(orders)}

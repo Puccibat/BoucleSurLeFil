@@ -51,11 +51,7 @@ const Cart = cartUpdate => {
 
   return (
     <div>
-      <Layout
-        title='Shopping Cart'
-        description='BoucleSurLeFil'
-        className='container-fluid'
-      />
+      <Layout className='container-fluid' />
       <div>{items.length > 0 ? showItems(items) : noItemsMessage()}</div>
       <div className='container'>
         <h2 className='mb-4 mt-5 fontSnd'>Votre panier</h2>

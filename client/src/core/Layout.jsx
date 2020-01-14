@@ -3,12 +3,7 @@ import { Link } from 'react-router-dom';
 import Menu from './Menu';
 import '../style.css';
 
-const Layout = ({
-  title = 'Title',
-  description = 'Description',
-  children,
-  className
-}) => {
+const Layout = ({ children, className }) => {
   return (
     <div>
       <div>

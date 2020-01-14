@@ -203,11 +203,7 @@ const UpdateProduct = ({ match }) => {
     );
 
   return (
-    <Layout
-      title='Add a new product'
-      description={`Hey ${user.name} ! Please add a new product`}
-      className='container'
-    >
+    <Layout className='container'>
       <div className='row'>
         <div className='col-md-8 offset-md-2'>
           {showLoading()}

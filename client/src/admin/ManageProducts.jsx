@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '../core/Layout';
 import { isAuth } from '../auth/index';
-import { createCategory } from '../admin/ApiAdmin';
 import { getProducts, deleteProduct } from './ApiAdmin';
 
 const ManageProducts = () => {

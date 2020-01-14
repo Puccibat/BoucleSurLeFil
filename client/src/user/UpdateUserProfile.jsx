@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Layout from '../core/Layout';
 import Footer from '../core/Footer';
 import EnConstruction from './enconstruction.png';

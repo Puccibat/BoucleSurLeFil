@@ -15,7 +15,7 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
 
   const loadProductsBySell = () => {
-    getProducts('sold').then(data => {
+    getProducts('sold', 8).then(data => {
       if (data.error) {
         setError(data.error);
       } else {
@@ -25,7 +25,7 @@ const Home = () => {
   };
 
   const loadProductsByArrival = () => {
-    getProducts('createdAt').then(data => {
+    getProducts('createdAt', 8).then(data => {
       if (data.error) {
         setError(data.error);
       } else {

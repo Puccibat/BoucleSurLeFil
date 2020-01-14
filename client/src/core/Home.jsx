@@ -9,9 +9,7 @@ import Spinner from './Spinner';
 const Home = () => {
   const [productsBySell, setPorductsBySell] = useState([]);
   const [productsByArrival, setPorductsByArrival] = useState([]);
-  const [productsByCategory, setPorductsByCategory] = useState([]);
   const [error, setError] = useState(false);
-  const [categories, setCategories] = useState([]);
 
   const loadProductsBySell = () => {
     getProducts('sold', 8).then(data => {

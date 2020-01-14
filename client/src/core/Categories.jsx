@@ -1,10 +1,6 @@
 import React from 'react';
 
-const Categories = ({
-  categories,
-  loadProductbyCategory,
-  loadProductsByArrival
-}) => {
+const Categories = ({ categories, loadProductbyCategory }) => {
   return (
     <div>
       <div className='navbar navbar-expand-lg'>

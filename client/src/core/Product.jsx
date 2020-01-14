@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import Layout from './Layout';
-import Categories from './Categories';
 import ShowImage from './ShowImage';
 import Footer from './Footer';
 import { read } from './apiCore';

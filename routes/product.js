@@ -52,8 +52,8 @@ router.put(
 // @acces   Public
 router.get('/products', list);
 
-// @route   GET api/products/related/:productId
-// @desc    Get related products
+// @route   GET api/products/productsBycategory/:productId
+// @desc    Get products by category
 // @acces   Public
 router.get('/products/productsBycategory/:categoryId', productsByCategory);
 

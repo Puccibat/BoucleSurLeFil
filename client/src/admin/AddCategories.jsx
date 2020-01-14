@@ -35,7 +35,7 @@ const AddCategories = () => {
   const newCategoryForm = () => (
     <form onSubmit={clickSubmit}>
       <div className='form-group'>
-        <label className='text-muted'>Name of you're new category</label>
+        <label className='text-muted'>Nom de votre catégorie</label>
         <input
           type='text'
           className='form-control'

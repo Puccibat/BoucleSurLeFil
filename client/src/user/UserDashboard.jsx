@@ -11,7 +11,7 @@ const UserDashboard = () => {
 
   const userLinks = () => {
     return (
-      <div className='card'>
+      <div className='card mb-5'>
         <h4 className='card-header'></h4>
         <ul className='list-group fontSnd'>
           <li className='list-group-item'>
@@ -62,8 +62,8 @@ const UserDashboard = () => {
       className='container'
     >
       <div className='row'>
-        <div className='col-3'>{userLinks()}</div>
-        <div className='col-9'>
+        <div className='col-sm-3'>{userLinks()}</div>
+        <div className='col-sm-9'>
           {userInfo()}
           {purchaseHistory()}
         </div>

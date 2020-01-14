@@ -25,24 +25,24 @@ router.post('/category/create/:userId', requireSignin, isAuth, isAdmin, create);
 // @route   PUT api/category/categoryId/:userId
 // @desc    Update a category
 // @acces   Admin
-router.put(
-  '/category/:categoryId/:userId',
-  requireSignin,
-  isAuth,
-  isAdmin,
-  update
-);
+// router.put(
+//   '/category/:categoryId/:userId',
+//   requireSignin,
+//   isAuth,
+//   isAdmin,
+//   update
+// );
 
 // @route   DELETE api/category/:categoryId/:userId
 // @desc    Create a category
 // @acces   Admin
-router.delete(
-  '/category/:categoryId/:userId',
-  requireSignin,
-  isAuth,
-  isAdmin,
-  remove
-);
+// router.delete(
+//   '/category/:categoryId/:userId',
+//   requireSignin,
+//   isAuth,
+//   isAdmin,
+//   remove
+// );
 
 // @route   GET api/categories
 // @desc    Get all categories
